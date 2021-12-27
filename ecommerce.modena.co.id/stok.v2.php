@@ -111,7 +111,12 @@ foreach( $server_output as $kode_produk=>$arr_gudang_produk ){
 	// cek stok gudang cabang
 	if( $arr_item[$kode_produk]["stok"] < $arr_item[$kode_produk]["kuantitas"] ){
 		
-		$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ __GUDANG_PUSAT__ ]["stok"] - @$quantity_booking_order_total[$kode_produk];
+		$gudang_pusat = __GUDANG_PUSAT__;
+		$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$kode_produk];
+		if( $arr_item[$kode_produk]["stok"] <= 0 ){
+			$gudang_pusat = __GUDANG_PUSAT_TGN__;
+			$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$kode_produk];
+		}
 		
 		// cek stok gudang pusat
 		if( $arr_item[$kode_produk]["stok"] < $arr_item[$kode_produk]["kuantitas"] ){
@@ -134,8 +139,8 @@ foreach( $server_output as $kode_produk=>$arr_gudang_produk ){
 			    // cek stok item induk di gudang pusat karena rework stiker di pusat
 			    else{
 			        
-			        $item_id_induk = $arr_gudang_produk[ __GUDANG_PUSAT__ ]["item_induk"];
-			        $arr_item[$kode_produk]["stok"] = $server_output[ $item_id_induk ][__GUDANG_PUSAT__]["stok"];
+			        $item_id_induk = $arr_gudang_produk[ $gudang_pusat ]["item_induk"];
+			        $arr_item[$kode_produk]["stok"] = $server_output[ $item_id_induk ][$gudang_pusat]["stok"];
 			        //if( $server_output[ $item_id_induk ][__GUDANG_PUSAT__]["stok"] < $arr_item[$kode_produk]["kuantitas"] )
 			         //   $arr_item[$kode_produk]["kuantitas"] = ($arr_item[$kode_produk]["stok"] > 0 ? $arr_item[$kode_produk]["stok"] : 0);
 			        if( $arr_item[$kode_produk]["stok"] > $arr_item[$kode_produk]["kuantitas"] )
