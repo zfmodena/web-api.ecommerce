@@ -1,0 +1,414 @@
+[2014-02-24 08:19 Europe/Berlin] Can't connect to PayPal to validate IPN message: SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+[2014-02-24 08:19 Europe/Berlin] Can't connect to PayPal to validate IPN message: SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+[2014-02-24 08:19 Europe/Berlin] Can't connect to PayPal to validate IPN message: SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+[2014-02-25 04:51 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 850
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=114.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=20%3A51%3A23+Feb+24%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.61&notify_version=3.7&custom=25214616&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31AXLC6hC21HabAa7Y9LSA4-13Vxee&payer_email=buyer%40modena.co.id&txn_id=1B216608R85961526&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.61&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.+25214616&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=25214616&payment_gross=114.00&shipping=0.00&ipn_track_id=680e7a465c9a5
+[2014-02-25 04:51 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Tue, 25 Feb 2014 04:51:28 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=6xFZxL-p5AyQCQyd6wpQ7yFR8GV0cD0SdcpNaZ4C7fkGFRWZZsDg-3ovEux275Vy_pLmdlnZYclBEuf-r7fvC4BzUOMztB3m2PIDywdxOJGoXscFbOK9jMUmzkOdDuFL5O8b3S9oYWxCAu-aal3yM6DNNclSNmJIkFvKOrVLiAlIJNFUIyo5k_etWWBoulwXzJczVOSMUcy5_D8kOBI54-A2mAknBxTQJ-F9tjdh0LcXWoAyHeZWD9IKut3cWYS9XpM0FL1v75hywmn8urEKTugYbCA8AgeroNxiWneJoHwFimEacpOg1m8IkGhnlNav6CFNsxLV-5xb04il-MqyqXSSjuZvrKLrWl-vwSbmJYljuwODuyVc7WBtbFY7j2PBTC_CU-yNzASZBlinJm1-BWHKIcB06WxAjGKV8YxYkD9n7hWkqm_LBdGL7di; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 23-Feb-2024 04:51:28 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 25-Feb-2016 04:51:28 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393303888520582; path=/; expires=Thu, 18-Feb-44 04:51:28 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D1344343123; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393303888509318; path=/; expires=Thu, 18-Feb-44 04:51:28 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2014-02-25 04:51 UTC] Verified IPN: cmd=_notify-validate&mc_gross=114.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=20%3A51%3A23+Feb+24%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.61&notify_version=3.7&custom=25214616&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31AXLC6hC21HabAa7Y9LSA4-13Vxee&payer_email=buyer%40modena.co.id&txn_id=1B216608R85961526&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.61&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.+25214616&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=25214616&payment_gross=114.00&shipping=0.00&ipn_track_id=680e7a465c9a5 
+[2014-02-25 05:08 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 823
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=114.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=20%3A51%3A23+Feb+24%2C+2014+PST&payment_status=Completed&charset=windows-1252&first_name=CONTOH&mc_fee=3.61&notify_version=3.7&custom=25214616&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=Az9T.UHBGmuIgodv6WyJ-NM267caAmKjJrvRaMbQQB2RtmRDF4C8VlYX&payer_email=buyer%40modena.co.id&txn_id=1B216608R85961526&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.61&receiver_id=XLMSVUJ4LS968&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.+25214616&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=25214616&payment_gross=114.00&shipping=0.00&ipn_track_id=f965434a857b8
+[2014-02-25 05:08 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Tue, 25 Feb 2014 05:08:59 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=IS3bxkmP-smDun1hHgpTM9LwbMMBotR3S4fEG_KQW7mLTznaLvtgeBzwwTUkkZL_BippK6c-naA7f1vuCbtL7movCyAylxUsMubrPoskEcFvoXuogF6ctjOtE8hEGfo1njchuKUltyr1oujPBlmU8IGzPCWJ6Kt1VFrr3XtQKYBi0vanY5-fpvEC187kLqCXpgejurM2ggq2hCAlESXMkJCgKeMqZG9EgMM7ND9hUyCx4uHszy6UFtzlqjq9vFVN6TGzupvMkBCzYDFoxPJp_lKBN1psqwyXX2hcye6Je8U8z975q3R6y7sJ6QuF4UEweGeAEqcBxYm84Za4z32gM0uaBubNPYv7IwE3i5d3hrClo2E6Xyh6RjmjhbRqcyCvKsMYO5bS13jM0WPmnddUkT8NWSi8QbrVz8N5TYpeZthy5VOYFgmi8M41Lqu; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 23-Feb-2024 05:08:59 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 25-Feb-2016 05:08:59 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393304939123628; path=/; expires=Thu, 18-Feb-44 05:08:59 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D1797590099; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393304939111907; path=/; expires=Thu, 18-Feb-44 05:08:59 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2014-02-25 05:08 UTC] Verified IPN: cmd=_notify-validate&mc_gross=114.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=20%3A51%3A23+Feb+24%2C+2014+PST&payment_status=Completed&charset=windows-1252&first_name=CONTOH&mc_fee=3.61&notify_version=3.7&custom=25214616&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=Az9T.UHBGmuIgodv6WyJ-NM267caAmKjJrvRaMbQQB2RtmRDF4C8VlYX&payer_email=buyer%40modena.co.id&txn_id=1B216608R85961526&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.61&receiver_id=XLMSVUJ4LS968&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.+25214616&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=25214616&payment_gross=114.00&shipping=0.00&ipn_track_id=f965434a857b8 
+[2014-02-26 08:51 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 849
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=107.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=00%3A51%3A29+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.40&notify_version=3.7&custom=25214154&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31A9IyOvtU6s2f99vLXb0prMshxVNV&payer_email=buyer%40modena.co.id&txn_id=63A32428XF087625J&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.40&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.25214154&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=25214154&payment_gross=107.00&shipping=0.00&ipn_track_id=d23ac418c6f41
+[2014-02-26 08:51 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Wed, 26 Feb 2014 08:51:39 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=fVaHbZyg_dPpudD_LUJ5eYlio8zwAc3uOteGWRyotHOi2zieCZIAMaNnUecKivgqJJBfR12r1G0REy8t6Ol7-wuEtJuXSqOrZ-dKdm1Xdl2GilzBNIxsY0oZW_SUJOf9uFOeqFgY-FFV-ICtJLZhyImvMjPIcvzqDuGwHzeJT6AbiJyFuzRLllp1SzL4VStDMWw5a6s2n-L3eDT-C21pwiqkZHWSf22hkBpYdeiIxmyQ9YHoZJt76S94E_cyvxhkTd1zSnHOyh1zHnDv5vhTVMuFkn0SdAT4SefyjHHn_rj45gEV4enKSg70GUXMrbFRbkvmbh04NdwJHIzMDuoe_nCC5cOo0KW0AY_Wi0KTFCFqHsIudOMywdfZnAL8ONlljkwDk26UJ_prdN-Lcu2M1SYr8QnvaOY8uGac6AIm6hFs0m1QgdzERxgQlye; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 24-Feb-2024 08:51:39 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 26-Feb-2016 08:51:39 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393404699415652; path=/; expires=Fri, 19-Feb-44 08:51:39 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D464194899; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393404699405347; path=/; expires=Fri, 19-Feb-44 08:51:39 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2014-02-26 08:51 UTC] Verified IPN: cmd=_notify-validate&mc_gross=107.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=00%3A51%3A29+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.40&notify_version=3.7&custom=25214154&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31A9IyOvtU6s2f99vLXb0prMshxVNV&payer_email=buyer%40modena.co.id&txn_id=63A32428XF087625J&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.40&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.25214154&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=25214154&payment_gross=107.00&shipping=0.00&ipn_track_id=d23ac418c6f41 
+[2014-02-26 08:53 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 20
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate
+[2014-02-26 08:53 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Wed, 26 Feb 2014 08:53:58 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=tu-cxA_k_-t5E7iN3SpYmm60-1o8X2dtg1TFYKCycsfGa1GGTrG5BpUZkFDFqkPPrOiK-LU_CdJYCG2eCbltt9mlHEtmU27gkmkC6lMFO8JaANNBp_zZ8QOnySfpt7qziW1-myhkFKOt165caW-vylcqYDY_Irv44Q4tbwDMRPzEVBgpJq3HGDppNxvEKJLktgH3CuUj68AC2u_8uwWcP482lJIQvxNa2QBX8kHXBDpn7Oyp1gdXNPjDv3b1GtZ2azXGcXok4XkIlJCqE2N9cbj3lGGv6Aic_9z7vaKWd9HdppkCdQRRnf8Y2TVCydwxo6oixTrDH4IVSEiBbPcyEHVxLYRR8knjo_8kh9k4dIijCw72JQiazuhZVsNRSLsBOVzvwRn2l8TwpwTmqmEDI59LS_LA6X8pX08L3_8HAeu26ISwJtbDUz0YADy; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 24-Feb-2024 08:53:58 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 26-Feb-2016 08:53:58 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393404838485624; path=/; expires=Fri, 19-Feb-44 08:53:58 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D2796227923; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393404838477205; path=/; expires=Fri, 19-Feb-44 08:53:58 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+INVALID
+[2014-02-26 08:53 UTC] Invalid IPN: cmd=_notify-validate
+[2014-02-26 09:00 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 849
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=107.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A00%3A38+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.40&notify_version=3.7&custom=26214965&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=An5ns1Kso7MWUdW4ErQKJJJ4qi4-AEfVdbAVbGi9zlzk.fEpra2EOmBD&payer_email=buyer%40modena.co.id&txn_id=9KM44369PS631433N&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.40&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214965&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214965&payment_gross=107.00&shipping=0.00&ipn_track_id=891863b012350
+[2014-02-26 09:00 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Wed, 26 Feb 2014 09:00:43 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=CVuJlHV-ygMyPi-BUpD2gVr8FKkXBs6XkRjpzrHHIlCtOqq07kD5RcJ4ew7NNarCVNH4k2e0-gLVw_6dxrRjKoBrgCYRa93dcR5BOa-p-aydKk3aLnxv_abg2zIA3IwtkH42VEnbYF_Dyhb7UN6UBZlfgqYEbzweLmqW3Uf7_Zur1-0YQad4NH_LVVW2xwdmsL7jrYFOuVOQnjIuJnnusVBgTbyP0YcvLfCFWGjtUhY6Ggwp0rQSwwWFVos2wz1MknROdKsh5hrilXb5dCdx0foeyKmMyHHyod0q90Zv2AN1-zfusFyoKfCIIYAkSlYK7sLfYs8xqslQVFbJ0BQfRS71Qd0oBjqHStOIuDJZEXf4QO18Fq55VFXJnUqwRLGvFiSoOZblhzQMgZMCiGjkgNshqyJr0IDwBI59AQDkEPGaLi48623Nu32iyUq; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 24-Feb-2024 09:00:43 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 26-Feb-2016 09:00:43 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393405243150139; path=/; expires=Fri, 19-Feb-44 09:00:43 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D1001196883; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393405243139450; path=/; expires=Fri, 19-Feb-44 09:00:43 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2014-02-26 09:00 UTC] Verified IPN: cmd=_notify-validate&mc_gross=107.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A00%3A38+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.40&notify_version=3.7&custom=26214965&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=An5ns1Kso7MWUdW4ErQKJJJ4qi4-AEfVdbAVbGi9zlzk.fEpra2EOmBD&payer_email=buyer%40modena.co.id&txn_id=9KM44369PS631433N&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.40&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214965&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214965&payment_gross=107.00&shipping=0.00&ipn_track_id=891863b012350 
+[2014-02-26 09:18 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 848
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=107.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A18%3A04+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.40&notify_version=3.7&custom=26214465&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31ATZx-CBSkVM--vwYk7o04cWv6XDH&payer_email=buyer%40modena.co.id&txn_id=7UR68454K9794140J&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.40&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214465&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214465&payment_gross=107.00&shipping=0.00&ipn_track_id=22c977a611de
+[2014-02-26 09:18 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Wed, 26 Feb 2014 09:18:08 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=brrxAHVg9bBbyjPtedwMWwHf3xKKIuyWK6eXGs0k07YZJJkMAkxOmoAkHWBMTcKAfxQIEQdrGwUWX5kmwKZ8R7WlSTzyg1StZlWjXl9Os3c5bxQu3zoBqz_cherqVTRfENYdX7j5vlLRFinFTLaBWq05KAhm8vP-jW-rDNzMPWT3G0RSi2ItZzJNVZMDe2xKWM4lZpRqN6AJt8j8l_t2k3cQFk9HIt9EQP9W7e9Q65uNUtK4zvuEknKNPvom560dDdBXrjm-PLub5y6geUx1Gdbd5jxnHdg0QZhO4EILLewjKJloY0IQzDhu-pQPL48uMp1QxudKPRbj_3iv0o-K6l0k1K-Riuynd_SoYjoRliLBoya-jIjIm6Ke4qxDeJ5IHtWoTneW9P2Q7_gTmGlZHPnIDBQJai2EFJqGZAjlXtjee_0--6UPGVOx4gu; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 24-Feb-2024 09:18:09 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 26-Feb-2016 09:18:09 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393406289005370; path=/; expires=Fri, 19-Feb-44 09:18:09 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D1353780563; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393406288993469; path=/; expires=Fri, 19-Feb-44 09:18:08 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2014-02-26 09:18 UTC] Verified IPN: cmd=_notify-validate&mc_gross=107.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A18%3A04+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.40&notify_version=3.7&custom=26214465&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31ATZx-CBSkVM--vwYk7o04cWv6XDH&payer_email=buyer%40modena.co.id&txn_id=7UR68454K9794140J&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.40&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214465&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214465&payment_gross=107.00&shipping=0.00&ipn_track_id=22c977a611de 
+[2014-02-26 09:23 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 849
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=107.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A23%3A05+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.40&notify_version=3.7&custom=26214614&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31AgvHjLdFANsp.LZE9If.ECQ7Xmj0&payer_email=buyer%40modena.co.id&txn_id=80C02951J2662141P&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.40&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214614&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214614&payment_gross=107.00&shipping=0.00&ipn_track_id=93e87cdb66c0a
+[2014-02-26 09:23 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Wed, 26 Feb 2014 09:23:10 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=SzkrUaUxM61XhU_NFQfs9FYfuOrlJyAHR_h5HLRn2Hh4XWFKpsH7_GlwUxR22JtjN9grrbuMHu87c5rs2KRgrNO2ZLyD5kTo0UKKOz0tnyRFA19xtdmPwmL1I-K010s_hWmJfzpdi0y6JvS2fmTsoGEFAICbRLRuLFYjZWElXty92LzStc6BsimOoT6IxX4Xb16RfYaYVYciq9WOhqKBA2oFM4Os6fZgExIV5vR7c8IZcy7SX3QS0cHDcZR63w7D6lOhfjfNLVrp-hVGDahVDOXirFg9_PEabrdNh8D1S4Sa594PU3Sabu1CTt5Siv0MMP2K-6XZ9p5JZbrflzclVc0KtPMQhsw7fzGXSkpow5fHkJx57EUTx522xBK1zZURB2UG7-YP0NKS4mfoIFdcueBLjsRW1Qa9wDmQ2bFR3bRAtnOnKaOVsyfTl1O; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 24-Feb-2024 09:23:10 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 26-Feb-2016 09:23:10 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393406590096021; path=/; expires=Fri, 19-Feb-44 09:23:10 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D2125598035; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393406590084252; path=/; expires=Fri, 19-Feb-44 09:23:10 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2014-02-26 09:23 UTC] Verified IPN: cmd=_notify-validate&mc_gross=107.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A23%3A05+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=3.40&notify_version=3.7&custom=26214614&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31AgvHjLdFANsp.LZE9If.ECQ7Xmj0&payer_email=buyer%40modena.co.id&txn_id=80C02951J2662141P&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=3.40&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214614&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214614&payment_gross=107.00&shipping=0.00&ipn_track_id=93e87cdb66c0a 
+[2014-02-26 09:27 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 849
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=196.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A27%3A22+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=5.98&notify_version=3.7&custom=26214497&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31AFXXAVP8rdti7Z8PrvsULSvRsurY&payer_email=buyer%40modena.co.id&txn_id=48601210KA022945K&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=5.98&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214497&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214497&payment_gross=196.00&shipping=0.00&ipn_track_id=47b36a91295b0
+[2014-02-26 09:27 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Wed, 26 Feb 2014 09:27:28 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=fFS5Q7EvYSB64nT_a8Yw9TrvMc4ct4MG3YnPAzwDNyI6oyRXCCe3TFxSH2OGBUuV2IcVwtZD6Y2L-ZY-RmC1Xy8ShrdMiGcvl-KhuXKDFYbiIwY6FvQCFTwivx07wZ0Itt7X8nvx4HvketBfVdrWFirAPY084UGDwGhdX0PY9t6qV7JQZ4KXVU1UXpk9RcnhxFKC-4HkYGOwtHnQhDkIKBEZ0mOoW3OFB5nVYXf7gHflBH4LPvC3bpleKpOKCbtjQb7G9H_nTWhLKZAsBesL0pQ3HfIh28lRiz6NTj4cqUe_OynzhFvNcAQPMiAnuqXPuiq8qWp8Tzi6hbyPMuaCIATe4bETazvtGILkH178k7ysltyTvcgA7CtcqsPZs6KMuduLiKuMNJKo4kaT-A3kREQQkXAv7l-ua_k3I3fWd51TiEpE6hGmUy7pyVG; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 24-Feb-2024 09:27:28 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 26-Feb-2016 09:27:28 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393406848476756; path=/; expires=Fri, 19-Feb-44 09:27:28 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D2159218003; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393406848465115; path=/; expires=Fri, 19-Feb-44 09:27:28 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2014-02-26 09:27 UTC] Verified IPN: cmd=_notify-validate&mc_gross=196.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A27%3A22+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=5.98&notify_version=3.7&custom=26214497&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31AFXXAVP8rdti7Z8PrvsULSvRsurY&payer_email=buyer%40modena.co.id&txn_id=48601210KA022945K&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=5.98&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214497&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214497&payment_gross=196.00&shipping=0.00&ipn_track_id=47b36a91295b0 
+[2014-02-26 09:31 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 849
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=270.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A31%3A44+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=8.13&notify_version=3.7&custom=26214693&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31A5-Kng6F.CoxnF2FpMI58VR3HDDw&payer_email=buyer%40modena.co.id&txn_id=3T5161706N3090428&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=8.13&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214693&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214693&payment_gross=270.00&shipping=0.00&ipn_track_id=a8b5dda38449e
+[2014-02-26 09:31 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Wed, 26 Feb 2014 09:31:50 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=_cZBr5A--cHS_lC0CkAGot08Tc4gZshdMF7yJjpm4AeGtTt0KyRxT5vLr73Zgr-7nY4StN1sS7meqAAe4QctySSHWoGNZfR14v3A4KiZeO0Ujx2gWiTTqzFi7InkeeVaMwNl02zAyBAoKZY10LLrSEslCGEMc5Rt7TeMTlI-1oOw-Ji9ycXZ4NSMHD6iQLK0l0mwl2445naCa1z69GGJYESO1v7wiik3UyvN1G1IuvMOQxIVKQo3s8915lHM6Y6hP4GPYLIp77MuAyBh6iuuuuyFa6QEQxt_ebkqOzfK86i9QqU7d7NamgFHcrIdJdoppiSVBH06yNtkTKc2u24p4WeNel7LMu1UXThnTPdfzphwdx7AjLU0EH8qvwrJ-VwEGfMRByawcUDBSKUP5sdckZQiaQG_Dv4uZg14zAtOmybR3vhrD3F7z2sohtu; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 24-Feb-2024 09:31:50 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 26-Feb-2016 09:31:50 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393407110421370; path=/; expires=Fri, 19-Feb-44 09:31:50 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D2259946835; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393407110411664; path=/; expires=Fri, 19-Feb-44 09:31:50 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2014-02-26 09:31 UTC] Verified IPN: cmd=_notify-validate&mc_gross=270.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A31%3A44+Feb+26%2C+2014+PST&payment_status=Pending&charset=windows-1252&first_name=CONTOH&mc_fee=8.13&notify_version=3.7&custom=26214693&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31A5-Kng6F.CoxnF2FpMI58VR3HDDw&payer_email=buyer%40modena.co.id&txn_id=3T5161706N3090428&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=8.13&receiver_id=XLMSVUJ4LS968&pending_reason=paymentreview&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214693&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214693&payment_gross=270.00&shipping=0.00&ipn_track_id=a8b5dda38449e 
+[2014-02-26 09:33 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 822
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=270.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A31%3A44+Feb+26%2C+2014+PST&payment_status=Completed&charset=windows-1252&first_name=CONTOH&mc_fee=8.13&notify_version=3.7&custom=26214693&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31AvCzQobVlqse0XZayVm04zdnQJrS&payer_email=buyer%40modena.co.id&txn_id=3T5161706N3090428&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=8.13&receiver_id=XLMSVUJ4LS968&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214693&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214693&payment_gross=270.00&shipping=0.00&ipn_track_id=2175f289e1137
+[2014-02-26 09:33 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Date: Wed, 26 Feb 2014 09:33:43 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=EwPd625WH_QOULbUCHSU0rOyO-PIJ3VGyd34Vjn4KuVHjyQsLGy_akp9YvYtuirGY_6o0ZnLj6V3FOMK1kpcLCZkO68opDdPtyDXoURquFRtKoHD__Y83nbt9UPD-V-Rlav7kFT1_pGTBCAkFksc1v7LxYuRI2-ps7_uXjB9vjJBcWSwUklSq3UC9xBUVngmXMzcgjvG2MrS3CMyW-8Hx_3e0cn4Kr8NqlgIb_oN5HomSYjFHfwhuiNw0IWyjW6Yv_lHMwKXO91S1AJMR_TPuQWXDbNvwEItsKFv7LapRR1QgTLaT4O6_WCCQE_piVtVC8YwRkRbOOvrGdBjH0SjTqRdMrkqF1MK0_IuopexDWlXX57t48N2ghT4c8uPrK6SEY76IGAJY-Yt-ZzEPv72KMqlHA-o0crLImDrBHCz9Rahr3la2bEKpzYFn_W; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 24-Feb-2024 09:33:44 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 26-Feb-2016 09:33:44 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1393407223626997; path=/; expires=Fri, 19-Feb-44 09:33:43 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D4155772243; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1393407223616428; path=/; expires=Fri, 19-Feb-44 09:33:43 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+VERIFIED
+[2014-02-26 09:33 UTC] Verified IPN: cmd=_notify-validate&mc_gross=270.00&protection_eligibility=Ineligible&payer_id=AXYFEQBXBLC4L&tax=0.00&payment_date=01%3A31%3A44+Feb+26%2C+2014+PST&payment_status=Completed&charset=windows-1252&first_name=CONTOH&mc_fee=8.13&notify_version=3.7&custom=26214693&payer_status=verified&business=zaenal.fanani%40modena.co.id&quantity=1&verify_sign=AFcWxV21C7fd0v3bYYYRCpSSRl31AvCzQobVlqse0XZayVm04zdnQJrS&payer_email=buyer%40modena.co.id&txn_id=3T5161706N3090428&payment_type=instant&last_name=BUYER&receiver_email=zaenal.fanani%40modena.co.id&payment_fee=8.13&receiver_id=XLMSVUJ4LS968&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.26214693&mc_currency=USD&item_number=&residence_country=US&test_ipn=1&handling_amount=0.00&transaction_subject=26214693&payment_gross=270.00&shipping=0.00&ipn_track_id=2175f289e1137 
+[2014-06-21 16:07 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 803
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&transaction_subject=21614134&payment_date=09%3A06%3A43+Jun+21%2C+2014+PDT&txn_type=web_accept&last_name=ST&residence_country=ID&item_name=MODENA+INDONESIA+-+INVOICE+NO.21614134&payment_gross=99.00&mc_currency=USD&business=finance%40modena.co.id&payment_type=instant&protection_eligibility=Ineligible&verify_sign=A0WHL.B2bVhQtUsnm75u9i41Y5FkAy3Rjk1sThA2ciIl6Zqxto2-eLdu&payer_status=verified&tax=0.00&payer_email=suryantoro_st%40yahoo.com&txn_id=0FK669743B150341D&quantity=1&receiver_email=finance%40modena.co.id&first_name=SURYANTORO&payer_id=6UN6T3LBUJV7N&receiver_id=GNWAK4RE6XESL&item_number=&handling_amount=0.00&payment_status=Completed&payment_fee=4.16&mc_fee=4.16&shipping=0.00&mc_gross=99.00&custom=21614134&charset=windows-1252&notify_version=3.8&ipn_track_id=5e5fd850415d5
+[2014-06-21 16:07 UTC] HTTP response of validation request: HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=14400
+Strict-Transport-Security: max-age=14400
+Content-Type: text/html; charset=UTF-8
+DC: slc-a-origin-www-2.paypal.com
+Date: Sat, 21 Jun 2014 16:07:31 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=4RXNDcTA97OP3TZIYvD_v3HDFro5m64GpBHEA1o02qM-ShwpTRBukKSp2JpGgpvEsYopT08gOTKhHCn83sxzmm97sY4-5fgoVS495rNAMGavHJ3BG_C34m50bL9sBdHDZLS7T8gIgoF8u_8xU8MCoL8vNscREXBDRQ9Wh-5U2Qff98KVNMrLbIZVIN9BB6BvEvlVJ21ZcIpo7GRzSzJ1PrTXvG-JCObhSn0Eh6gyyfYiCHAY14y4hVE_tfCm9Sr3jFB748FOrGz97TzFktp7gRypjokLcaLJvhOlgX0SRW_FEZrwWuwpnJ_Oqf6AANr57hxTyF1t-oLMeON3NCKrEMJeSc4mt8yMMFnuNOGUQAF3K8-Nrs7CAfBP8JvZaofZw4Rigra9RsaAANFGa9qPYGOexlUAMtX0ybd_2ruwc7nJxJvsTIxawNA1B_C; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Tue, 18-Jun-2024 16:07:30 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Mon, 20-Jun-2016 16:07:30 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.73.8.137.1403366850540836; path=/; expires=Mon, 13-Jun-44 16:07:30 GMT
+Set-Cookie: X-PP-SILOVER=name%3DLIVE5.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D3266159955; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.73.8.71.1403366850532140; path=/; expires=Mon, 13-Jun-44 16:07:30 GMT
+Set-Cookie: AKDC=slc-a-origin-www-2.paypal.com; expires=Sat, 21-Jun-2014 16:37:31 GMT; path=/; secure
+
+VERIFIED
+[2014-06-21 16:07 UTC] Verified IPN: cmd=_notify-validate&transaction_subject=21614134&payment_date=09%3A06%3A43+Jun+21%2C+2014+PDT&txn_type=web_accept&last_name=ST&residence_country=ID&item_name=MODENA+INDONESIA+-+INVOICE+NO.21614134&payment_gross=99.00&mc_currency=USD&business=finance%40modena.co.id&payment_type=instant&protection_eligibility=Ineligible&verify_sign=A0WHL.B2bVhQtUsnm75u9i41Y5FkAy3Rjk1sThA2ciIl6Zqxto2-eLdu&payer_status=verified&tax=0.00&payer_email=suryantoro_st%40yahoo.com&txn_id=0FK669743B150341D&quantity=1&receiver_email=finance%40modena.co.id&first_name=SURYANTORO&payer_id=6UN6T3LBUJV7N&receiver_id=GNWAK4RE6XESL&item_number=&handling_amount=0.00&payment_status=Completed&payment_fee=4.16&mc_fee=4.16&shipping=0.00&mc_gross=99.00&custom=21614134&charset=windows-1252&notify_version=3.8&ipn_track_id=5e5fd850415d5 
+[2014-10-04 12:34 UTC] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 807
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&transaction_subject=41014724&payment_date=05%3A34%3A09+Oct+04%2C+2014+PDT&txn_type=web_accept&last_name=M-+%2C&residence_country=ID&item_name=MODENA+INDONESIA+-+INVOICE+NO.41014724&payment_gross=98.00&mc_currency=USD&business=finance%40modena.co.id&payment_type=instant&protection_eligibility=Ineligible&verify_sign=A140LhYQsSP50hTlm.JkBxlSIZPQA8g0v2uHgjkosxDzjNoQ9k6tND2X&payer_status=unverified&tax=0.00&payer_email=tonyhermawan01%40gmail.com&txn_id=4DC55683UK055250G&quantity=1&receiver_email=finance%40modena.co.id&first_name=Anthony&payer_id=LSHTRQM25T6AE&receiver_id=GNWAK4RE6XESL&item_number=&handling_amount=0.00&payment_status=Completed&payment_fee=4.12&mc_fee=4.12&shipping=0.00&mc_gross=98.00&custom=41014724&charset=windows-1252&notify_version=3.8&ipn_track_id=37d878ff84b4c
+[2014-10-04 12:34 UTC] HTTP response of validation request: HTTP/1.1 403 Forbidden
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Type: text/html
+Content-Length: 285
+Expires: Sat, 04 Oct 2014 12:34:16 GMT
+Date: Sat, 04 Oct 2014 12:34:16 GMT
+Connection: close
+Strict-Transport-Security: max-age=63072000
+
+<HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;paypal&#46;com&#47;cgi&#45;bin&#47;webscr" on this server.<P>
+Reference&#32;&#35;18&#46;36a20017&#46;1412426056&#46;17efd77
+</BODY>
+</HTML>
+
+[2014-12-12 23:28 Asia/Jakarta] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 809
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&transaction_subject=121214951&payment_date=08%3A28%3A28+Dec+12%2C+2014+PST&txn_type=web_accept&last_name=Tamin&residence_country=SG&item_name=MODENA+INDONESIA+-+INVOICE+NO.121214951&payment_gross=243.00&mc_currency=USD&business=finance%40modena.co.id&payment_type=instant&protection_eligibility=Ineligible&verify_sign=AFmAqttpkUur0NPJajnjz8TLfA-kAAhJsuc84RQxMK4BLJlEIE5KIADQ&payer_status=unverified&tax=0.00&payer_email=reintamin%40icloud.com&txn_id=4L225406JF6501939&quantity=1&receiver_email=finance%40modena.co.id&first_name=Reinaldi&payer_id=6TZ5ST3WTAHEQ&receiver_id=GNWAK4RE6XESL&item_number=&handling_amount=0.00&payment_status=Completed&payment_fee=10.99&mc_fee=10.99&shipping=0.00&mc_gross=243.00&custom=121214951&charset=windows-1252&notify_version=3.8&ipn_track_id=f8a737042d55
+[2014-12-12 23:28 Asia/Jakarta] HTTP response of validation request: HTTP/1.1 403 Forbidden
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Type: text/html
+Content-Length: 285
+Expires: Fri, 12 Dec 2014 16:28:46 GMT
+Date: Fri, 12 Dec 2014 16:28:46 GMT
+Connection: close
+Strict-Transport-Security: max-age=63072000
+
+<HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;paypal&#46;com&#47;cgi&#45;bin&#47;webscr" on this server.<P>
+Reference&#32;&#35;18&#46;36a20017&#46;1418401726&#46;b01bde6
+</BODY>
+</HTML>
+
+[2015-02-06 16:13 Asia/Jakarta] HTTP request of validation 
+			request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 829
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=293.00&protection_eligibility=Ineligible&payer_id=DCRCCGWLDDD5G&tax=0.00&payment_date=01%3A13%3A05+Feb+06%2C+2015+PST&payment_status=Completed&charset=windows-1252&first_name=Lia&mc_fee=11.73&notify_version=3.8&custom=6215646&payer_status=unverified&business=finance%40modena.co.id&quantity=1&verify_sign=ARxVajk7F6JHvvaJ.Nzkceb2xxxEA0.F9YOZuV222XWYb8vB0Ed8n2Z8&payer_email=lia701%40gmail.com&txn_id=6W573155WE864770G&payment_type=instant&last_name=Sitawati&receiver_email=finance%40modena.co.id&payment_fee=11.73&receiver_id=GNWAK4RE6XESL&txn_type=web_accept&item_name=MODENA+INDONESIA+-+INVOICE+NO.6215646&mc_currency=USD&item_number=&residence_country=ID&receipt_id=1257-4548-2405-3331&handling_amount=0.00&transaction_subject=6215646&payment_gross=293.00&shipping=0.00&ipn_track_id=a890a0d2d3671
+[2015-02-06 16:13 Asia/Jakarta] HTTP response of validation request: HTTP/1.1 403 Forbidden
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Type: text/html
+Content-Length: 285
+Expires: Fri, 06 Feb 2015 09:13:22 GMT
+Date: Fri, 06 Feb 2015 09:13:22 GMT
+Connection: close
+Strict-Transport-Security: max-age=63072000
+
+<HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+ 
+You don't have permission to access "http&#58;&#47;&#47;www&#46;paypal&#46;com&#47;cgi&#45;bin&#47;webscr" on this server.<P>
+Reference&#32;&#35;18&#46;36a20017&#46;1423214002&#46;2907101
+</BODY>
+</HTML>
+

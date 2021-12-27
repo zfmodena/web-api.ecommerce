@@ -1,0 +1,29 @@
+<!--<td class="cell-background-#background-color#" onmouseover="over_product(#productid#, true)" onmouseout="over_product(#productid#, false)" id="img_#productid#">-->
+<div class="cell-background-#background-color#" 
+	onmouseover="over_product(#productid#, true)" 
+	onmouseout="over_product(#productid#, false)" 
+	id="img_#productid#" 
+	style="float:left; border:none solid black; margin:2px">
+	<a href="detail-#categoryid#-#sub_categoryid#-#productid#.php#sc_parameter###long_product_name#">
+				<div style="position:relative; padding-right:0px">
+					<img src="#product-image#" border="0" id="product_#productid#"  class="cell-product-img" alt="#name#" />
+					<div style="display:none" id="div_#productid#">
+						<div class="cell-product-name">#name#<br />#pricelist#</div>
+						<div class="cell-product-cmd-2" align="center" style="font-size:14px; font-weight:700">
+							<a href="javascript:void(0)" onclick="#url_compare#" id="bc_#productid#"><div style="padding:0px !important; margin-right:14px">#lang_compare#</div></a>
+							<a href="javascript:void(0)" onclick="#url_addtocart#" id="batc_#productid#"><div style="padding:0px !important; ">#lang_addtocart#</div></a>
+						</div>
+					</div>
+					<div style="display:none;" id="div_notif_#productid#">
+						<div class="cell-product-name"
+							style="font-weight:900; color:#A0A0A0;
+									width:90%; line-height:57px; 
+									text-align:center; margin-top:227px; left:15px;
+									background-color:#FFF; border:solid 1px #D2D2D2">
+						#shoppingcart_updated#
+						</div>
+					</div>
+				</div>
+				</a>
+				</div>
+<!--				</td>-->

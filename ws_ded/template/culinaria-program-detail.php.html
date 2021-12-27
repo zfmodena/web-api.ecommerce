@@ -1,0 +1,31 @@
+
+<style>
+#div_content div{width:100%; text-align:left; padding-bottom:16px; line-height:21px; margin:0px; margin-top:-3px;  }
+.judul_program{font-size:14px; width:100%; border:none 2px black; font-weight:700; letter-spacing:0.75px}
+.garis_bawah{padding-bottom:7px !important; padding-top:17px; border-bottom:solid #999 1px;}
+div.panah, div.panah img{ width:9px; float:right; position:relative; margin-top:-11px}
+div.program_konten{text-align:left; display:block; padding-top:7px}
+input[type="button"].culinaria-button-register{width:87px; height:32px; color:#FFF !important; background-color:black !important; border:none; opacity: 1 !important; filter: alpha(opacity=100) !important; float:right; margin-top:57px; width:100%; height:50px}
+input[type="button"].culinaria-button-register[disabled="true"]{background-color:#999 !Important; font-weight:900}
+</style>
+<div style="margin-top:16px">
+
+	<div style="float:left; width:100%;">
+		<div style="font-size:16px !important;" class="judul_program">#program_judul#</div>
+		<img src="#url-path-image#?img=#program_id#.jpg&size=#image-width#" style="border:none; width:100%; margin:17px 0px 17px 0px" />
+	</div>
+	<div style="float:left; width:auto; overflow:hidden; border:solid 1px none; width:100%; padding-bottom:27px" id="div_content">
+		<div style="margin-left:0px; width:100%; letter-spacing:0.05em;">			
+			<div style="text-align:left" class="font-grey-02-12">#program_keterangan#</div>
+			#program_detail#
+			#program_harga#
+		</div>
+		<input type="button" value="#lang_register#" #disabled#  class="culinaria-button-register" id="btn_daftar" onclick="cordova.InAppBrowser.open('#url-path-cart#?id=#program_id#', '_blank', 'location=no')" />
+	</div>
+
+	<div style="display:none; float:left; width:100%; margin-top:97px; text-align:left; letter-spacing:0.05em;" class="font-grey-01-12">
+	#lang_program_lain_diminati#
+	<div style="margin-top:7px">#program_lain_diminati#</div>
+	</div>
+	
+</div>

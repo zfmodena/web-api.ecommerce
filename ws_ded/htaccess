@@ -1,0 +1,46 @@
+
+RewriteOptions inherit
+
+AddType text/html asp
+Options -Indexes
+
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteRule category-(.*)-(.*)-(.*)-(.*)\.php category.php?categoryid=$1&sub_categoryid=$2&c=$3&productid=$4& [QSA,L]
+RewriteRule category-(.*)-(.*)-(.*)\.php category.php?categoryid=$1&sub_categoryid=$2&c=$3& [QSA,L]
+RewriteRule category-(.*)-(.*)\.php category.php?categoryid=$1&sub_categoryid=$2& [QSA,L]
+
+RewriteRule detail-(.*)-(.*)-(.*)-(.*)\.php product.php?categoryid=$1&sub_categoryid=$2&c=$3&productid=$4 [QSA,L]
+RewriteRule detail-(.*)-(.*)-(.*)\.php product.php?categoryid=$1&sub_categoryid=$2&productid=$3 [QSA,L]
+
+RewriteRule detailacc-(.*)-(.*)-(.*)-(.*)-(.*)\.php category_subproductdetail.php?categoryid=$1&sub_categoryid=$2&subsub_categoryid=$3&c=$4&productid=$5 [QSA,L]
+RewriteRule detailacc-(.*)-(.*)-(.*)-(.*)\.php category_subproductdetail.php?categoryid=$1&sub_categoryid=$2&subsub_categoryid=$3&productid=$4 [QSA,L]
+
+RewriteRule compare-(.*)-(.*)-(.*)-(.*)\.php category_productcompare.php?categoryid=$1&sub_categoryid=$2&c=$3&productid=$4 [QSA,L]
+RewriteRule compare-(.*)-(.*)\.php category_productcompare.php?categoryid=$1&sub_categoryid=$2 [QSA,L]
+
+RewriteRule shoppingcart-(.*)-(.*)-(.*)-(.*)\.php shoppingcart.php?categoryid=$1&sub_categoryid=$2&productid=$3&c=$4 [QSA,L]
+RewriteRule shoppingcart-(.*)-(.*)-(.*)\.php shoppingcart.php?categoryid=$1&sub_categoryid=$2 [QSA,L]
+RewriteRule shoppingcart-(.*)-(.*)\.php shoppingcart.php?categoryid=$1&sub_categoryid=$2 [QSA,L]
+
+RewriteRule ^appliances$ appliances.php
+RewriteRule ^professional$ professional.php
+RewriteRule ^culinaria$ culinaria.php
+RewriteRule ^culinaria-gallery$ culinaria-gallery.php
+RewriteRule ^culinaria-program$ culinaria-program.php
+RewriteRule ^crazyoffer$ promo.php
+RewriteRule ^competition$ competition.php
+
+ErrorDocument 404 /404.php
+ErrorDocument 501 /404.php
+
+#php_value upload_max_filesize 10M
+
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php54” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php54 .php .php5 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

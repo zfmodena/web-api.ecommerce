@@ -1,0 +1,4 @@
+[17-Apr-2020 18:55:37 Asia/Bangkok] PHP Warning:  include(lib/var.php): failed to open stream: No such file or directory in /home/modenaim/public_html/lib/json.php on line 2
+[17-Apr-2020 18:55:37 Asia/Bangkok] PHP Warning:  include(): Failed opening 'lib/var.php' for inclusion (include_path='.:/opt/cpanel/ea-php54/root/usr/share/pear') in /home/modenaim/public_html/lib/json.php on line 2
+[27-Jul-2020 07:57:40 UTC] PHP Deprecated:  Directive 'allow_url_include' is deprecated in Unknown on line 0
+[27-Jul-2020 07:57:51 UTC] PHP Deprecated:  Directive 'allow_url_include' is deprecated in Unknown on line 0

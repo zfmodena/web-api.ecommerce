@@ -1,0 +1,166 @@
+<html>
+<head>
+<script>
+function __create_iframe_otfly(){
+	var ob_iframe=document.createElement('iframe')
+	document.forms[0].appendChild(ob_iframe)
+	ob_iframe.setAttribute('id', 'ob_iframe');	
+	ob_iframe.setAttribute('name', 'ob_iframe');	
+	ob_iframe.setAttribute('width', '0px')
+	ob_iframe.setAttribute('height', '0px')
+	ob_iframe.setAttribute('frameborder', '0px')
+	ob_iframe.setAttribute('style', 'display:none')
+	return ob_iframe;
+}
+
+function __submit(url, par, tgt){
+	replace_char()
+	var sPar='';
+	if(par!='')sPar='?'
+	var parx=par.split('+')
+	for(var x=0; x<parx.length; x++){
+		try{var keyval=parx[x].split('=');document.getElementById(keyval[0]).value=keyval[1];}
+		catch(e){sPar+=parx[x]+'&'}
+	}
+	document.forms[0].encoding='multipart/form-data';
+	if(tgt!=''&&typeof(tgt)!='undefined')document.forms[0].target=tgt;
+	else document.forms[0].target='_self';
+	document.forms[0].action=url+sPar.substr(0, sPar.length-1);
+	DisablingInput('button', true)	;
+	document.forms[0].submit();
+}
+
+function replace_char(){
+	for(var x=0; x<document.forms[0].length; x++)
+		if(document.forms[0].elements[x].type=='text'||document.forms[0].elements[x].type=='textarea'||document.forms[0].elements[x].type=='hidden'){
+			var arr_inp=document.forms[0].elements[x].id.split('_')
+			var found_address=false
+			for(var y=0; y<arr_inp.length; y++)		if(arr_inp[y]=='address')found_address=true;
+			if(found_address)document.forms[0].elements[x].value=String(document.forms[0].elements[x].value).replace(/\n/gi, ' ')
+			else document.forms[0].elements[x].value=String(document.forms[0].elements[x].value).replace(/\n/gi, '<br />')
+		}
+}
+
+function DisablingInput(s_type, b){
+	for(var x=0; x<document.forms[0].length; x++){
+		try{if(document.forms[0].elements[x].type==s_type)document.forms[0].elements[x].disabled=b}catch(e){}
+	}
+}
+
+function __change_state(ob,mode){
+	var ob_iframe=__create_iframe_otfly()
+	var a_ob=ob.value.split('|')
+	var up=(mode?'&mode=view':'')
+	ob_iframe.src='cart.php?c=change_state&m='+ob.id+'&state_id='+a_ob[0]+'&cost='+a_ob[1]+up;	
+	try{document.getElementById('s_city').disabled=false}catch(e){}
+}
+
+function __change_region(ob){
+	location.href='cart.php?c=change_region&region_id=' + ob.value;
+}
+
+function qty(productid, mode){
+	__submit("cart.php", "c=qty_produk&productid="+ productid +"&sc=" + mode)
+}
+
+function __kode_promo(){
+	if( document.getElementById("kode_promo").value.trim() == "" ) return false
+	__submit("cart.php", "c=kode_promo&kode="+ document.getElementById("kode_promo").value)
+}
+
+function __kode_promo_culinaria(){
+	if( document.getElementById("kode_promo_culinaria").value.trim() == "" ) return false
+	__submit("cart.php", "c=kode_promo_culinaria&kode="+ document.getElementById("kode_promo_culinaria").value)
+}
+</script>
+<style>
+div, table, td, input, select {font-size:16px}
+</style>
+</head>
+<body>
+<form id="frmx" method="post">
+<h2>Pembelian item reguler/pre-order (barang jadi+spare part) dan trade-in barang jadi</h2>
+<table width="100%" style="margin-bottom:17px">
+	<tr>
+		<td><strong>Shopping Cart No. #order_no#</strong> <a href="cart-tambah.php">Tambah Produk</a> | <a href="cart.php?c=reset_cart">Reset Cart</a></td>
+	</tr>
+	<tr>
+		<td>#gudang#
+			<div style="position:relative" class="input-container">
+<div class="select-style" style="float:left !important; margin-bottom:10px; width:247px; margin-right:3px !important">
+													<select name="t_state" id="t_state" onchange="#action_state#" class="font-grey-01-11" style="font-size:11px !important;">
+													#string_opsi_propinsi#
+													</select>
+												</div>
+<div id="err_t_state" class="error-empty-input" title="#lang_error_empty_input#"></div>
+								</div>												
+												<input type="text" name="t_city" id="t_city" size="35px" maxlength="110" value="" style="visibility:hidden; position:absolute" />
+<div style="position:relative" class="input-container">												
+												<div class="select-style" style="float:left !important; width:247px; margin-right:3px !important">
+													<select name="s_city" id="s_city" onchange="#action_region#" class="font-grey-01-11" style="font-size:11px !important; " #s_city_disabled#>
+													#string_opsi_kota#
+													</select>
+												</div>									
+<div id="err_s_city" class="error-empty-input" title="#lang_error_empty_input#"></div>
+								</div>	
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<Table width="100%" border="1" cellpadding="3">
+				<tr>
+					<td>Produk</td>
+					<td>Stok Lokal</td>
+					<td>Stok Pusat</td>
+					<td>Shipping Delay (Hari)</td>
+					<td>Qty</td>
+					<td>Harga</td>
+					<td>Diskon Total Per Item</td>
+					<td>Sub Total</td>
+				</tr>
+					#cart-item#
+				<tr>
+					<td colspan="7">Sub Total</td><td>#total#</td>
+				</tr>
+				<tr>
+					<td colspan="7">Diskon Invoice</td><td>#diskon#</td>
+				</tr>
+				<tr>
+					<td colspan="7">Total</td><td>#fg-subtotal#</td>
+				</tr>
+			</Table>
+		</td>
+	</tr>
+	<tr>
+		<td>Kode promo : <input type="text" name="kode_promo" id="kode_promo" value="#kode_promo#" /><input type="button" name="b_kode_promo" id="b_kode_promo" value="Cek" onclick="__kode_promo()" style="margin-right:7px" />#status_kode_promo#</td>
+	</tr>
+</table>
+<h2>Kelas Culinaria</h2>
+<Table width="100%" border="1" cellpadding="3" style="margin-top:17px">
+	<tr>
+		<td></td>
+		<td>Kelas Culinaria</td>
+		<td>Harga</td>
+		<td>Qty</td>
+		<td>Sub Total</td>
+	</tr>
+	#cart-item-culinaria#
+	<tr>
+		<td colspan="4">Sub Total</td><td>#total-culinaria#</td>
+	</tr>
+	<tr>
+		<td colspan="4">Diskon Invoice</td><td>#diskon-culinaria#</td>
+	</tr>
+	<tr>
+		<td colspan="4">Total</td><td>#culinaria-subtotal#</td>
+	</tr>
+</table>
+<div style="margin-top:4px">
+	Kode promo : <input type="text" name="kode_promo_culinaria" id="kode_promo_culinaria" value="#kode_promo_culinaria#" /><input type="button" name="b_kode_promo_culinaria" id="b_kode_promo_culinaria" value="Cek" onclick="__kode_promo_culinaria()" style="margin-right:7px" />#status_kode_promo_culinaria#
+</div>
+<h2 style="margin-top:17px">GRAND TOTAL : #grand-total#</h2>
+<input type="button" name="b_kirim_accpac" id="b_kirim_accpac" value="(BARANG REGULER) Untuk Kirim Ke ACCPAC, ditrigger setelah ada pembayaran sukses di Doku" style="width:100%; margin-top:17px" onclick="location.href='accpac_sync_modena_active.php?order_number=#fg_order_no#'" />
+<input type="button" name="b_kirim_accpac_culinaria" id="b_kirim_accpac_culinaria" value="(CULINARIA) Untuk Kirim Ke ACCPAC, ditrigger setelah ada pembayaran sukses di Doku" style="width:100%; margin-top:17px" onclick="location.href='culinaria_accpac_sync_modena.php?order_number=#culinaria_order_no#'" />
+</form>
+</body>
+</html>

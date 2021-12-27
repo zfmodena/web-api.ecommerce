@@ -1,0 +1,397 @@
+ <style>
+ .shoppingcart-header-product{
+	background-color:#F0F0F3;
+	line-height:32px;
+ }
+ #shoppingcart-product-list td{
+	vertical-align:top;
+	padding-right:11px;
+ }
+ #shoppingcart-summary td{
+	line-height:27px;
+ }
+ #btn_continue_shopping div, #btn_add_to_cart div{
+	width:225px !important; 
+	height:37px !important; 
+	line-height:33px; 
+	font-size:14px; 
+	font-weight:900; 
+	letter-spacing:0.025em;
+ }
+ </style>
+ <script>
+    function __change_region_cart(ob){
+        __submit('shopping.php','c=change_region_cart&region_id='+ob.value)
+    } 
+    function __addtocart_cart(s,mode){
+    	var sc = '&sc=';
+    	try{
+    		var osc = document.getElementById('sc');
+    		sc += osc.value != '' ? osc.value : 'all'; 
+    		var pc = document.getElementById('t_discount_coupon');
+    		sc += pc.value != '' && pc.value != pc.title ? '&t_discount_coupon=' + pc.value : ''; 
+    	}catch(e){}
+    	var p=String(s).split('-')
+    	var q=1;	
+    	if(!mode){		
+    		try{q=parseInt(document.getElementById('qty_'+p[p.length-1]).value)}catch(e){}
+    		location.href='shopping-'+s+'-addcart.php?qty_' + p[p.length-1] +'=' + q + sc;
+    	}else{
+    		/*try{document.getElementById('qty_'+s).value=parseInt(document.getElementById('qty_'+s).value)}catch(e){}		
+    		__submit(pg[0],'c=simulatecart' + sc)*/
+    		var ob_iframe=__create_iframe_otfly();
+    		ob_iframe.src='category-'+s+'.php?qty_' + p[p.length-1] +'=' + q + sc;
+    	}
+    }
+    function __deletecart_cart(s, mode){
+    	var p=String(s).split('-');
+    	for(var x=0;x<arrp.length;x++)try{document.getElementById(arrp[x]).value=p[x]}catch(e){}
+    	if(!mode){
+    		__submit('shopping-'+s+'-deletecart.php', 'productid='+p[p.length-1]);
+    	}else{
+    		var p=String(s).split('-');
+    		var urlp='';
+    		var ob_iframe=__create_iframe_otfly();
+    		for(var x=0;x<arrp.length;x++)try{urlp += '&' + arrp[x] + '=' + p[x]}catch(e){}
+    		ob_iframe.src='minicart.php?c=deletecart' + urlp;
+    	}
+    }
+
+    var disableddates = ["8-17-2015", #disabled_shipping_day#];
+ 
+    function DisableSpecificDates(date) { 
+    	var m = date.getMonth();
+     	var d = date.getDate();
+     	var y = date.getFullYear();
+     	var currentdate = (m + 1) + '-' + d + '-' + y ;
+     
+     	for (var i = 0; i < disableddates.length; i++) {
+     		if ($.inArray(currentdate, disableddates) != -1 ) {
+     			return [false];
+     		}
+     	}
+     
+     	var day = date.getDay();
+     	return [(day != 0), ''];
+    }
+    
+    $(function() {
+    		$.datepicker.setDefaults($.extend({showMonthAfterYear: false}));
+    		$("#t_shipping_date_formatted_scps").datepicker({ 
+    			minDate: +2, 
+    			maxDate: "+1M", 
+    			beforeShowDay: DisableSpecificDates
+    		});    			
+    		$("#t_shipping_date_formatted_scps").datepicker("option", "dateFormat", "d MM yy");    	
+    		$("#t_shipping_date_formatted_scps").datepicker("option", "altField", "#t_shipping_date_scps");
+    		$("#t_shipping_date_formatted_scps").datepicker("option", "altFormat", "dd/mm/yy");
+    		$("#t_shipping_date_formatted_scps").datepicker($.datepicker.regional['#lang#']);		
+    	});
+    function revisi_alamat_kirim(mode){
+        if(mode == 0){// tambah
+            document.getElementById('opsi_tambah_or_existing_alamat_kirim').value = 'tambah'
+            $("#kontainer_tambah_alamat_kirim").show(250);
+            $("#kontainer_existing_alamat_kirim").hide(250);
+        }else if(mode == 1){// pilih yg lain
+            document.getElementById('opsi_tambah_or_existing_alamat_kirim').value = 'existing'
+            // load iframe pilih yang lain
+            greylayer('shopping_shippingaddress.php?h_shippingid=#h_shippingid#', 500, 500, false);
+        }else if(mode == 2){// existing
+            document.getElementById('opsi_tambah_or_existing_alamat_kirim').value = 'existing'
+            $("#kontainer_tambah_alamat_kirim").hide(250);
+            $("#kontainer_existing_alamat_kirim").show(250);
+        }
+    }
+    function setpayment(ob,s){
+    	//document.getElementById('b_payment_next').disabled=true;
+    	try{document.getElementById('pm').value=s	}catch(e){createElement(s)	}
+    	var counter=0;
+    	while(true==true)
+    		try{
+    			var tmp=document.getElementById('td_payment_'+counter);
+    			var tmpi=document.getElementById('img_td_payment_'+counter);
+    			if(ob.id!=tmp.id)	{
+    				tmp.checked=false;
+    				tmpi.src='images/radio-.png';
+    			}
+    			counter++;
+    		}catch(e){break;}
+    }
+    function createElement(s){
+    	var pm=document.createElement('input')
+    	pm.setAttribute('type','hidden')
+    	pm.setAttribute('id','pm')
+    	pm.setAttribute('name','pm')
+    	pm.setAttribute('value', s!=''?s:-1);
+    	document.forms[0].appendChild(pm);
+    }
+	function tradein(mode, productid){
+		var ob_iframe=__create_iframe_otfly();
+    	ob_iframe.src='shopping.php?c='+ mode +'&productid=' + productid;
+	}
+    $(document).ready(function(){
+      //#add_script#  
+    })
+ </script>
+ <table cellpadding="0"  cellspacing="0" id="containertable" border="0" style="padding-bottom:30px" class="font-grey-01-12">
+	<tr>
+		<td style="height:32px">
+			<div  id="sub_menu_navigation" class="category-sub-menu font-grey-03-11" style="display:block">
+			<div style="float:left">
+				Shopping Cart
+				<div style="padding:32px 0px 16px 0px; font-weight:900; letter-spacing:0.025em" class="font-grey-01-14">Order</div>
+			</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" height="100px">
+			<table cellpadding="0" cellspacing="0" width="100%" border="0" id="shoppingcart-product-list">
+				<tr>
+					<td width="32px" class="category-sub-menu font-grey-03-11 shoppingcart-header-product" >&nbsp;</td>
+					<td class="category-sub-menu font-grey-03-11  shoppingcart-header-product" >#lang_product#</td>
+					<td width="130px" class="category-sub-menu font-grey-03-11 shoppingcart-header-product" >#lang_unitprice#</td>
+					<td width="130px" class="category-sub-menu font-grey-03-11  shoppingcart-header-product" >#lang_afterdisc#</td>
+					<td width="130px" class="category-sub-menu font-grey-03-11  shoppingcart-header-product" >#lang_quantity#</td>
+					<td width="130px" class="category-sub-menu font-grey-03-11  shoppingcart-header-product" >Sub Total</td>
+					<td width="32px" class="category-sub-menu font-grey-03-11  shoppingcart-header-product" >&nbsp;</td>
+				</tr>			
+				#shoppingcart_product_list#
+				<tr><td colspan="7" height="16px">&nbsp;</td></tr>		
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">			
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="font-grey-01-12">
+				<tr>
+					<td valign="top" width="50%">			
+						<table cellpadding="0" cellspacing="0" width="100%" border="0" class="font-grey-01-12">							
+							<tr>
+								<td  class="category-sub-menu" style="font-weight:900; padding:16px 0px 7px; 0px; ">#availability_header#</td>
+							</tr>
+							<tr>
+								<td style="padding:0px 32px 0px 0px">
+									<div style="float:left; width:100%; margin-bottom:1px;" class="font-grey-02-12"><p style="width:100%; letter-spacing:0.05em; line-height:18px">#availability_content#</p></div>
+									<div style="float:left; text-align:left; width:100%;" class="font-grey-02-12">#selectbox_state_region#</div>
+								</td>
+							</tr>
+							<tr>
+								<td  class="category-sub-menu" style="font-weight:900; padding:32px 0px 7px; 0px; display:#lang_shipping_address_text_info_display#">#lang_shipping_address_text_info#</td>
+							</tr>
+							<tr>
+							    <style>
+							        #kontainer_alamat_kirim table td, #kontainer_informasi_kirim table td{
+							            line-height:21px !important;
+							            padding-top:11px;
+							        }
+							        .error-empty-input{
+							            display:none; position:absolute; bottom:0px; right:3px
+							        }
+							    </style>
+							    <td id="kontainer_alamat_kirim" >
+							        <div style="display:#kontainer_tambah_alamat_kirim#" id="kontainer_tambah_alamat_kirim">
+    							        <table width="100%" cellpadding="0" cellspacing="0" class="font-grey-02-12">
+    							            <tr>
+    							                <td colspan="2" style="position:relative">
+    							                    <div id="err_t_shipping_name" class="error-empty-input"></div>
+    							                    #lang_first_name#<br />
+    							                    <input type="text" name="t_shipping_name" id="t_shipping_name" value="#t_shipping_name#" style="width:100%" /></td>
+    							            </tr>
+    							            <tr>
+    							                <td style="width:50%;position:relative" >
+        							                <div id="err_t_shipping_phone" class="error-empty-input"></div>    
+        							                #lang_telephone#
+        							                <input type="text" name="t_shipping_phone" id="t_shipping_phone" value="#t_shipping_phone#" style="width:100%" /></td>
+        							            <td style="padding-left:11px; position:relative">
+        							                <div id="err_t_shipping_handphone" class="error-empty-input"></div> 
+        							                #lang_handphone#
+        							                <input type="text" name="t_shipping_handphone" id="t_shipping_handphone" value="#t_shipping_handphone#" style="width:100%" /></td>
+    							            </tr>
+    							            <tr>
+    							                <td colspan="2" style="position:relative">
+    							                    <div id="err_t_shipping_address" class="error-empty-input"></div> 
+    							                    #lang_address#<br />
+    							                    <textarea name="t_shipping_address" id="t_shipping_address" style="width:100%; height:47px">#t_shipping_address#</textarea></td>
+    							            </tr>
+    							            <tr>
+    							                <td colspan="2" >#lang_homecity# - #lang_homestate# : #lang_homecity-lang_homestate#</td>
+    							             </tr>
+    							             <tr>
+    							                <td >#lang_postalcode#<br />
+    							                <input type="text" name="t_shipping_postalcode" id="t_shipping_postalcode" value="#t_shipping_postalcode#" style="width:100%" /></td>
+    							                 <td></td>
+    							            </tr>
+    							            <tr>
+    							                <td colspan="2" style="display:#command_existing_alamat_kirim#">
+    							                    <a href="javascript:revisi_alamat_kirim(2)" style="text-decoration:underline">#lang_back#</a> | <a href="javascript:revisi_alamat_kirim(1)" style="text-decoration:underline">#lang_edit_shipping_address#</a>
+    							                </td>
+    							            </tr>
+    							            <tr>
+    							                <td colspan="2" style="display:#command_existing_alamat_kirim_noback#">
+    							                    <a href="javascript:revisi_alamat_kirim(1)" style="text-decoration:underline">#lang_edit_shipping_address#</a>
+    							                </td>
+    							            </tr>
+    							        </table>
+							        </div>
+							        <div style="display:#kontainer_existing_alamat_kirim#; line-height:18px" class="font-grey-02-12" id="kontainer_existing_alamat_kirim">
+							            <strong>#existing_alamat_kirim_nama#</strong><br />
+							            #existing_alamat_kirim_alamat#<br />
+							            #existing_alamat_kirim_telp#
+							            <div style="text-align:left; padding-top:7px"><a href="javascript:revisi_alamat_kirim(0)" style="text-decoration:underline">#lang_shipping_address_add#</a> | <a href="javascript:revisi_alamat_kirim(1)" style="text-decoration:underline">#lang_edit_shipping_address#</a></div>
+							        </div>
+							        <input type="hidden" name="opsi_tambah_or_existing_alamat_kirim" id="opsi_tambah_or_existing_alamat_kirim" value="#opsi_tambah_or_existing_alamat_kirim#" />
+							        <input type="hidden" name="h_shippingid" id="h_shippingid" value="#h_shippingid#" />
+							    </td>
+							 </tr>
+							 <tr>
+								<td  class="category-sub-menu" style="font-weight:900; padding:22px 0px 7px; 0px; display:#lang_shipping_confirmation_title_display#">#lang_shipping_confirmation_title#</td>
+							</tr>
+							 <tr>
+							     <td id="kontainer_informasi_kirim" style="display:#kontainer_informasi_kirim#">
+							         <table width="100%" cellpadding="0" cellspacing="0" class="font-grey-02-12">
+							             <tr>
+							                 <td style="width:50%">#lang_shipping_date#<br />
+							                    <!--<input type="text" name="t_shipping_date" id="t_shipping_date" value="#t_shipping_date#" style="width:100%" />-->
+							                    <input type="text" name="t_shipping_date_formatted_scps" id="t_shipping_date_formatted_scps" 
+                    								style="width:100%" maxlength="50" 
+                    								value="#t_shipping_date_scps#" readonly />
+                    							<input type="hidden" name="t_shipping_date_scps" id="t_shipping_date_scps" 
+                    								value="#t_shipping_date_scps#" />
+							                    </td>
+							                 <td>&nbsp;</td>
+							             </tr>
+							             <tr>
+							                <td colspan="2" style="">#lang_note#<br />
+							                <textarea name="t_shipping_note" id="t_shipping_note" style="width:100%; height:47px">#t_shipping_note#</textarea></td>
+							            </tr>
+							             <tr>
+							                <td colspan="2">
+							                    <ul style="margin-left:-20px">
+							                        <li>#lang_shipping_date_note#</li>
+							                        <li>#lang_shipping_preorder_note#</li>
+							                    </ul></td>
+							            </tr>
+							         </table>
+							         
+							     </td>
+							 </tr>
+						</table>		
+					</td>
+					<td>&nbsp;</td>
+					<td valign="top"  width="40%" style="background-color:#F0F0F3; padding:16px">
+						<table cellpadding="0" cellspacing="0" width="100%" border="0" class="font-grey-01-12">							
+							<tr>
+								<td  class="category-sub-menu" style="font-weight:900; padding:0px 16px 16px; 16px; ">Summary</td>
+							</tr>
+							<tr>
+								<td style="padding:0px 16px 16px; 16px; ">
+									<table cellpadding="0" cellspacing="0" border="0" width="100%" class="font-grey-02-12" id="shoppingcart-summary">
+										<tr>
+											<td width="50%">Sub Total</td><td>Rp#subtotal#</td>
+										</tr>
+										<tr>
+											<td valign="top">#lang_promodeduction#</td>
+											<td>
+												<table cellpadding="0" cellspacing="0" width="100%" border="0" class="font-grey-02-12">
+													#promodeduction#
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td>#lang_shipping_cost#</td><td><span id="span_ship_cost"></span></td>
+										</tr>
+										<tr>
+											<td colspan="2" style="" >
+												<hr width="100%" style="border-top: 2px solid #A0A0A0;" size="1px" noshade />
+											</td>
+										</tr>
+										<tr>
+											<td class="font-grey-02-12" style="line-height:24pt; letter-spacing:0.05em">Grand Total</td>
+											<td class="font-grey-02-12" style="line-height:24pt; letter-spacing:0.05em" id="column_grandtotal">Rp#discount_grandtotal#</td>
+										</tr>
+										<tr>
+											<td colspan="2">#discount_note#</td>
+										</tr>
+										<tr>
+											<td style="padding-top:17px" colspan="2">
+												<table  cellpadding="0" cellspacing="0" border="0" width="100%" class="font-grey-01-12">
+													<tr>														
+														<td colspan="2" style="padding-bottom:12px">
+														<div>
+								<div  class="category-sub-menu font-grey-02-12" style="padding:0px 0px 7px; 0px; ">#lang_discount_coupon_info_2#</div>
+								<div  style="padding:0px 32px 0px 0px">
+									<div style="position:relative" class="input-container">
+									    <!-- onkeydown="javascript:if(event.keyCode==13&&this.value!='')/*__discount_coupon(this, #subtotal#)*/session_check(this.id)" 
+											onblur="/*__discount_coupon(this, #subtotal#)*/session_check(this.id)" title="#lang_discount_coupon_info#" -->
+										<input type="text" name="t_discount_coupon" id="t_discount_coupon" value="#value_discount_coupon#" 
+											style="width:153px; "
+											class="content-style"
+											#disabled# />
+											<input type="button" name="b_discount_coupon" id="b_discount_coupon" value="#lang_use_discount_coupon#" onclick="session_check('t_discount_coupon')" />
+										<div id="error_discount" class="error-empty-input"></div>
+									   </div>
+									<!--<div id="error_discount" style="padding:7px 0px 16px 0px"></div>					-->
+									#lang_promocode_term#
+								</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+													    <td colspan="2"><div style="padding-top:21px">#lang_payment_information#</div></td>
+													</tr>
+													<tr>
+														<td valign="top" style="width:5px; padding:32px 7px 0px 0px;display:#kontainer-toc-display#" align="left">
+															<input type="checkbox" name="cb_toc" id="cb_toc" value="true" style="float:left;" />
+															
+														</td>
+														<td style="padding-top:30px; display:#kontainer-toc-display#">
+														<div style="position:relative" class="input-container">
+															<div class="font-grey-02-12" style="line-height:23px">#lang_note_toc#</div>
+															<div id="err_cb_toc" class="error-empty-input" title="#lang_notify_toc#" ></div>
+														</div>
+														
+															<div style="float:right; padding-top:27px; display:none">
+																<a href="#link_questions#"
+																	style="text-decoration:underline">#questions#?</a>
+															</div>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>										
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding-top:32px"><div class="cell-product-cmd-compare" style="text-align:center !important; vertical-align:bottom !important; padding:0px; margin-right:-11px; height:53px;">
+													<a href="javascript:location.href='category-#categoryid#-#sub_categoryid#.php?sc=#sc_parameter#'" id="btn_continue_shopping">
+														<div style="line-height:37px">#lang_continueshopping#</div>
+													</a>
+												</div></td>
+					<td>&nbsp;</td>
+					<td style="padding-top:32px"><div class="cell-product-cmd-compare" style="text-align:center !important; vertical-align:bottom !important; padding:0px; height:53px;">
+													<a href="javascript:__validator();void(0)" id="btn_add_to_cart">
+														<div style="line-height:37px">#lang_proceedtocheckout#</div>
+													</a>
+												</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<input type="hidden" name="sc" id="sc" value="#sc_parameter#" />
+	<input type="hidden" name="pm" id="pm" value="#pm#" />
+</table>	
+<script>
+function session_check(trigger){
+	var st = typeof trigger !== 'undefined' ? '&trigger='+trigger : ''
+	var f=__create_iframe_otfly();f.src='shopping.php?c=session_check' + st;
+}
+function __validator(){
+	#__validator#
+    session_check();
+}
+</script>

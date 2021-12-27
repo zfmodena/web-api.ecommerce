@@ -1,0 +1,69 @@
+<style>
+.watermark{
+	position:relative;
+	top:-30%;
+	left:-50%;
+	width:37px; 
+	height:auto;
+}
+.yt-kontainer-utama{
+	position:relative;
+	margin:11px;
+	display:inline-block
+}
+.yt-kontainer-watermark{
+	position:absolute; 
+	left:50%; 
+	top:30%; 
+	z-index:2
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+var sURL = new Array()
+sURL[0] = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=5&playlistId=PLURGZCKR6IhntTWh51X5Z3LoVpS2S4cBJ&key=AIzaSyD-P-LYczIg4nOQyHZqWYxC2cEs5sQjibI"
+sURL[1] = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=5&playlistId=PLURGZCKR6IhlFpmeWlJRQSECh8l-tVy-K&key=AIzaSyD-P-LYczIg4nOQyHZqWYxC2cEs5sQjibI"
+
+inisialisasi_youtube(" FC ")
+
+function inisialisasi_youtube(  kata_kunci ){
+	for( var x=0; x < sURL.length; x++ )
+		muat_youtube( x, sURL[x], kata_kunci )
+}
+
+function muat_youtube( counter, urlx, kata_kunci ){
+	try{
+	return $.ajax({
+				type: "GET",
+				url: urlx ,
+				data: {  },
+				success: function(msg){
+					gambar_thumbnail_youtube( counter, msg, kata_kunci )
+				}
+			});
+	}catch(e){}
+}
+
+function gambar_thumbnail_youtube( counter, data, kata_kunci ){
+	var string_konten = ""
+	for( var x=0; x < data.items.length; x++ ){
+		try{
+			var imgsrc = data.items[x].snippet.thumbnails.default;
+			if( data.items[x].snippet.title.indexOf( kata_kunci ) !== -1 || data.items[x].snippet.description.indexOf( kata_kunci ) !== -1 )	
+				string_konten += "<div class='yt-kontainer-utama' style='width:"+ imgsrc.width +"px; height:"+ imgsrc.height +"px; ' onclick='muat_video(\""+ data.items[x].contentDetails.videoId +"\")' ><img src='"+ imgsrc.url +"' style='z-index:1;width:"+ imgsrc.width +"px; height:"+ imgsrc.height +"px;'  /><div class='yt-kontainer-watermark'><img src='play.png' class=\"watermark\"  /></div></div>";
+		}catch(e){}
+	}
+	document.getElementById("y_kontainer").innerHTML += string_konten
+	
+	// loading halaman selanjutnya	
+	if( data.pageInfo.totalResults > data.pageInfo.resultsPerPage && typeof data.nextPageToken !== "undefined" )
+			muat_youtube(  counter,  sURL[ counter ] + "&pageToken=" + data.nextPageToken, kata_kunci )
+		
+}
+
+function muat_video( videoid ){
+	document.getElementById("y_iframe").src = "http://www.youtube.com/embed/"+ videoid +"?rel=0&controls=0&autoplay=1&origin=http://localhost"
+}
+</script>
+<div id="y_kontainer"></div>
+<iframe id="y_iframe" src="" style="width:100%; height:400px"></iframe>
