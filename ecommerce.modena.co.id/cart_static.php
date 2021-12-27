@@ -11,7 +11,7 @@ include_once "lib/cls_culinaria_cart.php";
 // otorisasi key
 $auth = sha1(__KEY__ . sha1(trim(@$_REQUEST["rand"]) . __KEY__) . trim(@$_REQUEST["order_no"]) ) ;
 //die($auth);
-if( $auth != @$_REQUEST["auth"] ) die("E1");
+if( $auth != @$_REQUEST["auth"] ) die("E1 " . $auth);
 
 // header
 $sql = "SELECT c.*, case when c.mode = 'culinaria' then e.total else d.total end subtotal, 
