@@ -222,12 +222,12 @@ class shoppingcart extends main{
 	}
 		
 	private static function is_product_exists($memberemail, $productid, $status, $mode="ONLINE" /* ONLINE || SHOWROOM */){/* cek produk di orderproduct, dalam 1 order tidak boleh ada 2 product_id di tabel orderproduct */
-		$sql="select 1 from orderproduct a /*, product b where a.product_id=b.productid and*/ where a.order_id=
+		$sql="select 1 from orderproduct a /*, product b where a.product_id=b.productid and*/ where a.order_id in 
 			(select order_id from ordercustomer where memberid=
 				(select memberid from membersdata where email='".main::formatting_query_string($memberemail)."') 
 				and order_status=".main::formatting_query_string($status)."
 				#order_source#
-				order by order_date desc limit 1 
+				/*order by order_date desc limit 1 */
 			) 
 			and a.product_id=".main::formatting_query_string($productid);
 		if($mode!="ONLINE") $sql=str_replace("#order_source#", "and order_no like '".@$_SESSION["showroom_inisial"]."%'", $sql);
