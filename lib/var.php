@@ -22,15 +22,15 @@ $string="ptindomomulia";
 
 // koneksi database
 $server="127.0.0.1";
-$username="modenaim_user";
-$password="duckster";
-$database="modenaim_modena_2";
+$username="modenado_root3";
+$password="KopiKapalApi05";
+$database="modenado_modenaim";
 
 // koneksi database recovery
 $server_recovery="127.0.0.1";
-$username_recovery="modenaim_user";
-$password_recovery="duckster";
-$database_recovery="modenaim_modena_2";
+$username_recovery="modenadotcom";
+$password_recovery="KopiKapalApi05";
+$database_recovery="modenado_modenaim";
 
 
 /* comment line berikut utk PHP 5.6 */
@@ -57,7 +57,7 @@ define("SMTP_AUTH",true);
 define("SMTP_USERNAME","support@modena.co.id");
 //define("SMTP_USERNAME","");
 //define("SMTP_PASSWORD","sp*328");
-define("SMTP_PASSWORD","SuppORT@STR*328");
+define("SMTP_PASSWORD","5upp0RT@m0d3n4");
 //define("SMTP_PASSWORD","");
 define("CRLF","\n");
 
@@ -174,8 +174,8 @@ $max_preorder_item=2;
 /* interval waktu dalam satuan jam utk menghapus stok yang digantung */
 $hour_interval="1 hour";
 
-$auto_stock_url="http://apps.modena.com:802/modena_accpac/trx/index.php";
-$culinaria_auto_stock_url="http://apps.modena.com:802/culinaria_modena_accpac/trx/index.php";
+$auto_stock_url="https://api.web.modena.com/modena_accpac/trx/index.php";
+$culinaria_auto_stock_url="https://api.web.modena.com/culinaria_modena_accpac/trx/index.php";
 
 /* untuk real-time stok */
 $ftp_address="202.158.114.230";
@@ -652,7 +652,7 @@ $arr_sticker_lokasi_valid = array("244","246","250","251","267","268","271", 274
 // utk API website versi baru
 define("__KEY__", "KopiKapalApi17");
 define("__KEY_AIR__", "ptim328");
-define("__API__", "http://apps.modena.com:802/dm.v2/ws/");
+define("__API__", "https://dm.modena.com/ws/");
 define("__EMAIL__", "zaenal.fanani@modena.co.id");
 define("__LANG__", "id");
 define("__GUDANG_PUSAT__", "WH-KWFGA");
