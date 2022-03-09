@@ -288,11 +288,16 @@ if( @$_SESSION["arr_order_no"]["culinaria_order_no"] != "" )
 
 // entri ke grup order customer
 if( count($_SESSION["arr_order_no"]) > 0 ){
+	
+	$arr_string_order_no = array();
+	foreach( array_values( $_SESSION["arr_order_no"] ) as $order_no )
+		$arr_string_order_no[] = "'" . main::formatting_query_string( $order_no ) . "'";
+		
 	$template_sql = "
 		select ifnull(
 				(
 					select parent_order_no from group_ordercustomer a 
-					where a.order_no in ('". main::formatting_query_string( implode( "',", array_values( $_SESSION["arr_order_no"] ) ) ) ."')
+					where a.order_no in (".  implode( ",", $arr_string_order_no ) .")
 				) , '#order_no[0]#')
 			, a.order_no 
 		from (select '#order_no#' order_no) a
@@ -300,8 +305,15 @@ if( count($_SESSION["arr_order_no"]) > 0 ){
 	$arr_order_no_values = array_values($_SESSION["arr_order_no"]);
 	foreach( $arr_order_no_values as $index => $order_no )
 		$arr_sql_order_no[] = str_replace( array("#order_no[0]#", "#order_no#"), array($arr_order_no_values[0], $order_no), $template_sql );
-
-	mysql_query( " insert into group_ordercustomer " . implode(" union ", $arr_sql_order_no)  );
+	
+	mysql_query( "SET collation_connection = 'latin1_swedish_ci'; ");
+	mysql_query( "ALTER DATABASE $database_recovery CHARACTER SET latin1 COLLATE latin1_swedish_ci; ");
+	mysql_query( "ALTER TABLE ordercustomer CONVERT TO CHARACTER SET latin1 COLLATE latin1_swedish_ci; ");
+	mysql_query( "ALTER TABLE ordercustomer_log CONVERT TO CHARACTER SET latin1 COLLATE latin1_swedish_ci; ");
+	mysql_query( "ALTER TABLE orderproduct CONVERT TO CHARACTER SET latin1 COLLATE latin1_swedish_ci; ");
+	mysql_query( "ALTER TABLE orderproduct_log CONVERT TO CHARACTER SET latin1 COLLATE latin1_swedish_ci; ");
+	mysql_query( "ALTER TABLE group_ordercustomer CONVERT TO CHARACTER SET latin1 COLLATE latin1_swedish_ci; ");
+	mysql_query( $sql_collation . " insert into group_ordercustomer " . implode(" union ", $arr_sql_order_no)  ) or die(mysql_error());
 }
 
 // dapatkan order_id dari ordercustomer dan culinaria_ordercustomer
