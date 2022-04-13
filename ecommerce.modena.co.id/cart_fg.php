@@ -33,6 +33,8 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
 	$arr_par["dealer_id"] = __IDCUST_FG__;
 	$arr_par["gudang"] = $_SESSION["gudang"];
 	$arr_par["__STOK_AMAN__"] = __STOK_AMAN__;
+	$arr_par["negara"] = $_REQUEST["negara"];
+	$arr_par["mata_uang"] = $_REQUEST["mata_uang"];
 	foreach( array_keys($arr_item) as $kode_produk ){
 	  $arr_par["itemno"][] = $kode_produk;
 	  $arr_par["qty"][] = 0;//$arr_item[ $kode_produk ]["qty"];
@@ -61,7 +63,7 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
 			where 
 			a.order_id = c.order_id and
 			TIMESTAMPDIFF(MINUTE, a.order_date, CURRENT_TIMESTAMP) < ". $GLOBALS["payment_va_expiration"] ."+5  and 
-			order_status < 1 and c.sku in (". implode( ",", array_keys($sql_parameter) ) .")
+			order_status < 1 and c.sku in (". implode( ",", array_values($sql_parameter) ) .")
 			". @$sqladd ." group by c.sku
 		"; 
 		$rs = mysql_query($sql);
@@ -157,10 +159,12 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
         $server_output_diskon = panggil_curl(__API__ . "rdm", $arr_par);
 
 		$parameter_sql_insert = array();
-		foreach( $server_output as $kode_produk=>$arr_gudang_produk ){
+		foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
+			
+			$kode_produk = $arr_gudang_produk[ (@$_REQUEST["gudang"] != "" ? $_REQUEST["gudang"] : $_SESSION["gudang"]) ]["itemno_ori"];
 			unset($arr_rpl);
 
-			$gudang_terpilih = $temp_gudang_terpilih_per_item[ $kode_produk ]; 
+			$gudang_terpilih = $temp_gudang_terpilih_per_item[ $__kode_produk ]; 
 			$opsi_preorder = $_SESSION["shopping_cart_stok"][ $arr_item[$kode_produk]["productid"] ] > 0 ? 1 : 0;
 			
             // lewati utk item induk
@@ -199,7 +203,8 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
 			if( !array_key_exists($gudang_pusat, $arr_gudang_produk) )	$gudang_pusat = __GUDANG_PUSAT_TGN__;
 				
 			$arr_cart_fg[] = array(
-				"kode_produk" => $kode_produk,
+				"kode_produk" => $__kode_produk,
+				"kode_produk_ori" => $kode_produk,
 				"produk" => $arr_item[$kode_produk]["nama"],
 				"stok" => $arr_gudang_produk[ $_SESSION["gudang"] ]["stok"] - @$quantity_booking_order_total[$kode_produk],
 				"stok_pusat" => $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$kode_produk],

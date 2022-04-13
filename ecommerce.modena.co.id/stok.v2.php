@@ -57,7 +57,7 @@ if( @$_REQUEST["kota"] != "" ){
 $arr_par = array();
 $arr_par["__STOK_AMAN__"] = __STOK_AMAN__;
 $arr_par["dealer_id"] = __IDCUST_FG__;
-$arr_argumen = array("item", "gudang");
+$arr_argumen = array("item", "gudang", "negara", "mata_uang");
 foreach( $arr_argumen as $argumen )
     if( @$_REQUEST[$argumen] != "" )    $arr_par[$argumen] = $_REQUEST[$argumen];
 //die(__API__ . "?ws=stok_level.v2&". http_build_query($arr_par));
@@ -76,7 +76,7 @@ if( is_array($server_output) && count( $server_output ) > 0 ){
 		where 
 		a.order_id = c.order_id and
 		TIMESTAMPDIFF(MINUTE, a.order_date, CURRENT_TIMESTAMP) < ". $GLOBALS["payment_va_expiration"] ."+5  and 
-		order_status < 1 and c.sku in (". implode( ",", array_keys($sql_parameter) ) .")
+		order_status < 1 and c.sku in (". implode( ",", array_values($sql_parameter) ) .")
 		". @$sqladd ." group by c.sku
 	"; 
 	$rs = mysql_query($sql);
@@ -104,8 +104,13 @@ $arr_par["auth"] = sha1(__KEY_AIR__ . $rand . implode("", array_values($arr_par[
 //die(__API__ . "preorder_kuota" . "?" . http_build_query($arr_par));	
 $arr_kuota_preorder_dm = panggil_curl(__API__ . "preorder_kuota", $arr_par);
 
-foreach( $server_output as $kode_produk=>$arr_gudang_produk ){
-    $arr_item[$kode_produk]["nama_item"] = $arr_gudang_produk[ __GUDANG_PUSAT__ ]["item"];
+foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
+	$kode_produk = $arr_gudang_produk[ $_REQUEST["gudang"] ]["itemno_ori"];
+	
+    $arr_item[$kode_produk]["nama_item"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["item"];
+	$arr_item[$kode_produk]["itemno_negara"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["itemno"];
+	$arr_item[$kode_produk]["harga"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["harga"];
+	$arr_item[$kode_produk]["mata_uang"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["mata_uang"];
 	$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["stok"] - @$quantity_booking_order_total[$kode_produk];
 	
 	// cek stok gudang cabang
@@ -157,8 +162,14 @@ $arr_return = array();
 foreach( array_keys( $arr_item ) as $itemno ){
     if( !in_array($itemno, $_REQUEST["item"]) ) 
         unset( $arr_item[ $itemno ] );
-    else
-        $arr_return[] = $arr_item[ $itemno ] + array("itemno" => $itemno);
+    else{
+		if( array_key_exists("itemno_negara", $arr_item[ $itemno ]) )
+			$arr_return[] = $arr_item[ $itemno ] + array("itemno" => $itemno);
+		else {
+			unset($arr_item[ $itemno ]["kuantitas"]);
+			$arr_return[] = $arr_item[ $itemno ] + array("itemno" => $itemno);
+		}
+	}
 }
 
 header("Content-Type: application/json");
