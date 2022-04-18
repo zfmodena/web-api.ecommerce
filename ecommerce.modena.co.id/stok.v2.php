@@ -110,6 +110,7 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
     $arr_item[$kode_produk]["nama_item"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["item"];
 	$arr_item[$kode_produk]["itemno_negara"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["itemno"];
 	$arr_item[$kode_produk]["harga"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["harga"];
+	$arr_item[$kode_produk]["pricelist"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["pricelist"];
 	$arr_item[$kode_produk]["mata_uang"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["mata_uang"];
 	$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["stok"] - @$quantity_booking_order_total[$kode_produk];
 	
