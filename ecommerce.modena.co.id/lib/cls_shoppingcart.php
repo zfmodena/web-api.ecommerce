@@ -522,13 +522,14 @@ class shoppingcart extends main{
 	}
 	
 	public static function __insert_product($memberemail, $arr_product, $discount, $mode="ONLINE" /* ONLINE || SHOWROOM */){
+		$sql_update = array();
 		foreach($arr_product as $productid=>$quantity){
 			$price = $_SESSION["shopping_cart_price"][ $productid ];
 			if($productid=="")continue;
 			$product_discount=0;
 			if(@$GLOBALS["productid"]==$productid)$product_discount=@$GLOBALS["product_discount"]!=""?$GLOBALS["product_discount"]:0;
 			if(@$GLOBALS["promo_per_item_id"]!=""){
-				$col_promo_per_item_id=",promo_per_item_id";
+				$col_promo_per_item_id=",a.promo_per_item_id";
 				$val_promo_per_item_id="'".main::formatting_query_string($GLOBALS["promo_per_item_id"])."'";
 			}
 			if(!shoppingcart::is_product_exists($memberemail, $productid, 0, $mode))
@@ -540,28 +541,56 @@ class shoppingcart extends main{
 					(isset($val_promo_per_item_id)?",'".$val_promo_per_item_id."'":"")." from 
 					ordercustomer where memberid=(select memberid from membersdata where email='".main::formatting_query_string($memberemail)."') and order_status=0 
 					#order_source#";
-			else
-				$sql="update orderproduct a, ordercustomer b 
+			else{
+				$sql="update orderproduct a, ordercustomer b,  (select memberid from membersdata where email='".main::formatting_query_string($memberemail)."') c
 					set a.quantity=/*a.quantity+*/'".main::formatting_query_string($quantity)."', 
-					product_price='". main::formatting_query_string($price) ."',
-					product_promo='".$product_discount."',
-					product_pricepromo='". main::formatting_query_string($price) ."'-'".$product_discount."', 
-					discount='".main::formatting_query_string($discount)."',
-					tradein='".(@in_array($productid, @$_SESSION["tradein"])?1:0)."' ".
+					a.product_price='". main::formatting_query_string($price) ."',
+					a.product_promo='".$product_discount."',
+					a.product_pricepromo='". main::formatting_query_string($price) ."'-'".$product_discount."', 
+					a.discount='".main::formatting_query_string($discount)."',
+					a.tradein='".(@in_array($productid, @$_SESSION["tradein"])?1:0)."' ".
 					(isset($col_promo_per_item_id)?$col_promo_per_item_id."=".$val_promo_per_item_id."":"")."
 					where a.order_id=b.order_id and a.product_id='".main::formatting_query_string($productid)."' 
-					and b.memberid=(select memberid from membersdata where email='".main::formatting_query_string($memberemail)."') and b.order_status=0
+					and b.memberid=c.memberid and b.order_status=0
 					#order_source#";	
-
+				$sql_update["quantity"][$productid]	= " when a.product_id = '".main::formatting_query_string($productid)."' then '".main::formatting_query_string($quantity)."' ";
+				$sql_update["product_price"][$productid]	= " when a.product_id = '".main::formatting_query_string($productid)."' then '".main::formatting_query_string($price)."' ";
+				$sql_update["product_promo"][$productid]	= " when a.product_id = '".main::formatting_query_string($productid)."' then '".main::formatting_query_string($product_discount)."' ";
+				$sql_update["product_pricepromo"][$productid]	= " when a.product_id = '".main::formatting_query_string($productid)."' then '". main::formatting_query_string($price) ."'-'".$product_discount."' ";
+				$sql_update["discount"][$productid]	= " when a.product_id = '".main::formatting_query_string($productid)."' then '".main::formatting_query_string($discount)."' ";
+				$sql_update["tradein"][$productid]	= " when a.product_id = '".main::formatting_query_string($productid)."' then '".(@in_array($productid, @$_SESSION["tradein"])?1:0)."' ";
+				if( isset($col_promo_per_item_id) ) 
+					$sql_update[ $col_promo_per_item_id ][$productid]	= " when a.product_id = '".main::formatting_query_string($productid)."' then '".main::formatting_query_string($quantity)."' ";
+				continue;
+			}
+			
 			if($mode!="ONLINE") $sql=str_replace("#order_source#", "and order_no like '".@$_SESSION["showroom_inisial"]."%' and concat('',replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')*1) = replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')", $sql);
 			else				$sql=str_replace("#order_source#", "and order_no REGEXP '^[0-9]'", $sql);
 			mysql_query($sql) or die();//("insert order product error.<br />".mysql_error());
 			
-			$s_update_order_date = "update ordercustomer set order_date = CURRENT_TIMESTAMP where 
-											order_status=0 and 
-											memberid=(select memberid from membersdata where email='".main::formatting_query_string($memberemail)."')";
-			mysql_query($s_update_order_date);
 		}
+		if( count($sql_update) > 0 ){
+			$sql="update orderproduct a, ordercustomer b,  (select memberid from membersdata where email='".main::formatting_query_string($memberemail)."') c
+					set a.quantity=/*a.quantity+*/case ".implode(" ", array_values($sql_update["quantity"]))." end, 
+					a.product_price=case ".implode(" ", array_values($sql_update["product_price"]))." end,
+					a.product_promo=case ".implode(" ", array_values($sql_update["product_promo"]))." end,
+					a.product_pricepromo=case ".implode(" ", array_values($sql_update["product_pricepromo"]))." end, 
+					a.discount=case ".implode(" ", array_values($sql_update["discount"]))." end,
+					a.tradein=case ".implode(" ", array_values($sql_update["tradein"]))." end ".
+					(isset($sql_update[ $col_promo_per_item_id ])?$col_promo_per_item_id."=case ".implode(" ", array_values($sql_update[ $col_promo_per_item_id ]))." end ":"")."
+					where a.order_id=b.order_id and a.product_id='".main::formatting_query_string($productid)."' 
+					and b.memberid=c.memberid and b.order_status=0
+					#order_source#";	
+			if($mode!="ONLINE") $sql=str_replace("#order_source#", "and order_no like '".@$_SESSION["showroom_inisial"]."%' and concat('',replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')*1) = replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')", $sql);
+			else				$sql=str_replace("#order_source#", "and order_no REGEXP '^[0-9]'", $sql);
+			mysql_query($sql) or die();//("insert order product error.<br />".mysql_error());
+		}
+		$s_update_order_date = "update ordercustomer a, (select memberid from membersdata where email='".main::formatting_query_string($memberemail)."') b 
+								set a.order_date = CURRENT_TIMESTAMP where 
+								a.order_status=0 and 
+								a.memberid=b.memberid";
+		mysql_query($s_update_order_date);
+
 	}
 	
 	public static function get_product($memberemail, $order_no, $mode="ONLINE" /* ONLINE || SHOWROOM */){
