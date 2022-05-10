@@ -1,3 +1,3 @@
 <?
-echo "INIT";
+echo "INIT.SAP";
 ?>
