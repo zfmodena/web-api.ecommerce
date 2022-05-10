@@ -114,32 +114,34 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
     	foreach( $server_output as $kode_produk=>$arr_gudang_produk ){
     		$gudang_terpilih = $_SESSION["gudang"];			
 
+			$kode_produk_ori = $arr_gudang_produk[ $gudang_terpilih ]["itemno_ori"];
+			
     		// cek stok gudang cabang
-    		if( $arr_gudang_produk[ $gudang_terpilih ]["stok"] - @$quantity_booking_order_total[$kode_produk] < $arr_item[$kode_produk]["qty"] ){
+    		if( $arr_gudang_produk[ $gudang_terpilih ]["stok"] - @$quantity_booking_order_total[$kode_produk] < $arr_item[$kode_produk_ori]["qty"] ){
     		    
     			$gudang_terpilih = __GUDANG_PUSAT__;
 				if( !array_key_exists($gudang_terpilih, $arr_gudang_produk) )	$gudang_terpilih = __GUDANG_PUSAT_TGN__;
     			
     			// cek stok gudang pusat
-    			if( $arr_gudang_produk[ $gudang_terpilih ]["stok"] - @$quantity_booking_order_total[$kode_produk] < $arr_item[$kode_produk]["qty"] ){
+    			if( $arr_gudang_produk[ $gudang_terpilih ]["stok"] - @$quantity_booking_order_total[$kode_produk] < $arr_item[$kode_produk_ori]["qty"] ){
     			    
     			    // stok kosong
-    			    if( $_SESSION["shopping_cart_stok"][ $arr_item[$kode_produk]["productid"] ] <= 0 )
-    				    $arr_item[$kode_produk]["qty"] = 0;
+    			    if( $_SESSION["shopping_cart_stok"][ $arr_item[$kode_produk_ori]["productid"] ] <= 0 )
+    				    $arr_item[$kode_produk_ori]["qty"] = 0;
     				    
     				// cek preorder
-    				elseif( $_SESSION["shopping_cart_stok"][ $arr_item[$kode_produk]["productid"] ] > 0 ){
+    				elseif( $_SESSION["shopping_cart_stok"][ $arr_item[$kode_produk_ori]["productid"] ] > 0 ){
     				    $gudang_terpilih = "GDGPRO";
 
     				    $arr_paket_preorder_dm[ $kode_produk ] = $arr_kuota_preorder_dm[ $kode_produk ]["paket_id"];
     				    if( $arr_kuota_preorder_dm[ $kode_produk ]["kuota"] < 0  )
-    				        $arr_item[$kode_produk]["qty"] = 0;
+    				        $arr_item[$kode_produk_ori]["qty"] = 0;
     				        
     				    // cek stok item induk di gudang pusat karena rework stiker di pusat
     				    else{
     				        $item_id_induk = $arr_gudang_produk[ __GUDANG_PUSAT__ ]["item_induk"];
-    				        if( $item_id_induk != "" && $server_output[ $item_id_induk ][__GUDANG_PUSAT__]["stok"] < $arr_item[$kode_produk]["qty"] )
-    				            $arr_item[$kode_produk]["qty"] = 0;
+    				        if( $item_id_induk != "" && $server_output[ $item_id_induk ][__GUDANG_PUSAT__]["stok"] < $arr_item[$kode_produk_ori]["qty"] )
+    				            $arr_item[$kode_produk_ori]["qty"] = 0;
     				            
     				    }
     				}
@@ -149,8 +151,8 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
     	    $temp_gudang_terpilih_per_item[ $kode_produk ] = $gudang_terpilih;
     	    
     	    $arr_par["item"][$counter]["item_id"] = $kode_produk;
-    	    $arr_par["item"][$counter]["harga"] = $arr_item[$kode_produk]["harga"];
-    	    $arr_par["item"][$counter]["qty"] = $arr_item[$kode_produk]["qty"];
+    	    $arr_par["item"][$counter]["harga"] = $arr_item[$kode_produk_ori]["harga"];
+    	    $arr_par["item"][$counter]["qty"] = $arr_item[$kode_produk_ori]["qty"];
     	    $arr_par["item"][$counter]["gudang"] = $gudang_terpilih;
     	    $counter++;
     	}
