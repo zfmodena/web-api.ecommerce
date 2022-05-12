@@ -197,7 +197,7 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
 			                            '". main::formatting_query_string($arr_item[$kode_produk]["qty"]) ."', '". main::formatting_query_string($arr_item[$kode_produk]["harga"]) ."',
 			                            '". main::formatting_query_string($diskon/$arr_item[$kode_produk]["qty"]) ."', '". main::formatting_query_string( $arr_item[$kode_produk]["harga"] - ($diskon/$arr_item[$kode_produk]["qty"]) ) ."',
 			                            '". main::formatting_query_string($is_tradein) ."', '". main::formatting_query_string( $diskon > 0 ? "'". main::formatting_query_string($arr_item[$kode_produk]["diskon"]["status"]) ."'" : "" ) ."',
-			                            '". main::formatting_query_string($gudang_terpilih) ."', '". main::formatting_query_string($kode_produk) ."',
+			                            '". main::formatting_query_string($gudang_terpilih) ."', '". main::formatting_query_string($__kode_produk) ."',
 			                            '". main::formatting_query_string($arr_item[$kode_produk]["nama"]) ."', '". main::formatting_query_string($arr_item[$kode_produk]["berat"]) ."',
 			                            '". main::formatting_query_string($shipment_delay) ."', '". main::formatting_query_string($opsi_preorder) ."', '". main::formatting_query_string($paketid) ."'
 			                            )";
