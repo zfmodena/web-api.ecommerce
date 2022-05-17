@@ -2,7 +2,7 @@
 include_once "../lib/var.php";
 include_once "lib/cls_main.php"; // lib/cls_coupon_code_karyawan.php, 
 
-define("__API__", "https://air.modena.co.id/dm/ws/");
+define("__API__", "https://dm.modena.com/ws/");
 
 $arr_par = array();
 $arr_argumen = array("id", "identifier", "mode");
