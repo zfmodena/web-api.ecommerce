@@ -120,7 +120,7 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
     		if( $arr_gudang_produk[ $gudang_terpilih ]["stok"] - @$quantity_booking_order_total[$kode_produk] < $arr_item[$kode_produk_ori]["qty"] ){
     		    
     			$gudang_terpilih = __GUDANG_PUSAT__;
-				if( !array_key_exists($gudang_terpilih, $arr_gudang_produk) )	$gudang_terpilih = __GUDANG_PUSAT_TGN__;
+				if( !array_key_exists($gudang_terpilih, $arr_gudang_produk) || $gudang_terpilih == $_SESSION["gudang"] )	$gudang_terpilih = __GUDANG_PUSAT_TGN__;
     			
     			// cek stok gudang pusat
     			if( $arr_gudang_produk[ $gudang_terpilih ]["stok"] - @$quantity_booking_order_total[$kode_produk] < $arr_item[$kode_produk_ori]["qty"] ){
@@ -202,7 +202,7 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
 			                            '". main::formatting_query_string($shipment_delay) ."', '". main::formatting_query_string($opsi_preorder) ."', '". main::formatting_query_string($paketid) ."'
 			                            )";
 			$gudang_pusat = __GUDANG_PUSAT__;
-			if( !array_key_exists($gudang_pusat, $arr_gudang_produk) )	$gudang_pusat = __GUDANG_PUSAT_TGN__;
+			if( !array_key_exists($gudang_pusat, $arr_gudang_produk) ||  $arr_gudang_produk[ $gudang_pusat ]["stok"] <= 0 )	$gudang_pusat = __GUDANG_PUSAT_TGN__;
 				
 			$arr_cart_fg[] = array(
 				"kode_produk" => $__kode_produk,
