@@ -352,7 +352,7 @@ function sync_accpac($order_no, $debug = false){
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($curl));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , $GLOBALS["curl_connection_timeout"]); 
 		curl_setopt($ch, CURLOPT_TIMEOUT, $GLOBALS["curl_timeout"]); 
 		
