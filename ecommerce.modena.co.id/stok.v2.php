@@ -112,16 +112,16 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 	$arr_item[$kode_produk]["harga"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["harga"];
 	$arr_item[$kode_produk]["pricelist"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["pricelist"];
 	$arr_item[$kode_produk]["mata_uang"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["mata_uang"];
-	$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["stok"] - @$quantity_booking_order_total[$kode_produk];
+	$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["stok"] - @$quantity_booking_order_total[$__kode_produk];
 	
 	// cek stok gudang cabang
 	if( $arr_item[$kode_produk]["stok"] < $arr_item[$kode_produk]["kuantitas"] ){
 		
 		$gudang_pusat = __GUDANG_PUSAT__;
-		$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$kode_produk];
+		$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$__kode_produk];
 		if( $arr_item[$kode_produk]["stok"] <= 0 ){
 			$gudang_pusat = __GUDANG_PUSAT_TGN__;
-			$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$kode_produk];
+			$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$__kode_produk];
 		}
 		
 		// cek stok gudang pusat
