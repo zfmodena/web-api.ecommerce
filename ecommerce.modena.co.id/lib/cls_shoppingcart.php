@@ -581,7 +581,7 @@ class shoppingcart extends main{
 					where a.order_id=b.order_id and a.product_id='".main::formatting_query_string($productid)."' 
 					and b.memberid=c.memberid and b.order_status=0
 					#order_source#";	
-			if($mode!="ONLINE") $sql=str_replace("#order_source#", "and order_no like '".@$_SESSION["showroom_inisial"]."%' and concat('',replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')*1) = replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')", $sql);
+			if($mode!="ONLINE") $sql=str_replace("#order_source#", "and order_no like '".@$_SESSION["showroom_inisial"]."%' and concat('',replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')) = replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')", $sql);
 			else				$sql=str_replace("#order_source#", "and order_no REGEXP '^[0-9]'", $sql);
 			mysql_query($sql) or die();//("insert order product error.<br />".mysql_error());
 		}
