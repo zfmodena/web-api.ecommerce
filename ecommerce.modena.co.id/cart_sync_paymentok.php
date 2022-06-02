@@ -7,7 +7,7 @@ include "cart_sync_checkout.php";
 function kirim_email($url, $arr_par){
     $ch = curl_init();
     //echo "https://www.modena.com/ecommerce/" . $url . "?" . http_build_query($arr_par) . " -- ";
-	curl_setopt($ch, CURLOPT_URL, "https://www.modena.com/ecommerce/" . $url);
+	curl_setopt($ch, CURLOPT_URL, "https://ecommerce.modena.com/email/" . $url);
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($arr_par));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -20,9 +20,9 @@ function kirim_email($url, $arr_par){
 }
 
 // trap utk proses berikutnya, pastikan di pembayaran midtrans sudah berhasil (status code = 200)
-$sql = "select 1 from modenado_modena_prod.transactions a inner join modenado_modena_prod.orders b on a.order_id = b.id where a.status_code = 200 and b.modena_order_no = '". main::formatting_query_string(@$_REQUEST["order_no"]) ."'";
-//$rs_cek_status_code = mysql_query($sql);
-//if( mysql_num_rows( $rs_cek_status_code ) <= 0 ) die("E3");
+$sql = "select 1 from modena_db.transactions a inner join modena_db.orders b on a.order_id = b.id where a.status_code = 200 and b.modena_order_no = '". main::formatting_query_string(@$_REQUEST["order_no"]) ."'";
+$rs_cek_status_code = mysql_query($sql);
+if( mysql_num_rows( $rs_cek_status_code ) <= 0 ) die("E3");
 
 // mekanisme sinkron ke accpac
 include_once "accpac_sync_modena_active.php";

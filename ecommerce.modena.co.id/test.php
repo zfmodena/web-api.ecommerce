@@ -1,3 +1,3 @@
 <?
-echo "INIT.SAP.V2";
+echo "INIT.SAP.V2-GCP";
 ?>

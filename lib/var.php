@@ -21,15 +21,15 @@ define("__FORCED_MOBILEVIEW__", false);
 $string="ptindomomulia";
 
 // koneksi database
-$server="127.0.0.1";
-$username="modenado_root3";
-$password="KopiKapalApi05";
+$server="mysql-server";
+$username="webuser";
+$password="M0d3naWeb#2022";
 $database="modenado_modenaim";
 
 // koneksi database recovery
-$server_recovery="127.0.0.1";
-$username_recovery="modenadotcom";
-$password_recovery="KopiKapalApi05";
+$server_recovery="mysql-server";
+$username_recovery="webuser";
+$password_recovery="M0d3naWeb#2022";
 $database_recovery="modenado_modenaim";
 
 
@@ -174,8 +174,8 @@ $max_preorder_item=2;
 /* interval waktu dalam satuan jam utk menghapus stok yang digantung */
 $hour_interval="1 hour";
 
-$auto_stock_url="https://api.web.modena.com/modena_accpac/trx/index.php";
-$culinaria_auto_stock_url="https://api.web.modena.com/culinaria_modena_accpac/trx/index.php";
+$auto_stock_url="https://apiweb.modena.com/modena_accpac/trx/index.php";
+$culinaria_auto_stock_url="https://apiweb.modena.com/culinaria_modena_accpac/trx/index.php";
 
 /* untuk real-time stok */
 $ftp_address="202.158.114.230";
@@ -183,7 +183,7 @@ $ftp_username="modenaim";
 $random=rand(0, 9999);
 
 $curl_connection_timeout = 10;
-$curl_timeout = 15;
+$curl_timeout = 60;
 
 //koleksi cookies
 /*
