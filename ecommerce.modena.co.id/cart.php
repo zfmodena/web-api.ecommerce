@@ -90,6 +90,12 @@ function get_shipping_cost_per_weight($regionid){
 	$rs_shipping_cost_=mysql_fetch_array($rs_shipping_cost);
 	$return["cost"]=$rs_shipping_cost_["cost"];
 	$return["percent"]=$rs_shipping_cost_["percent"];
+
+	$return = array();
+	$arr_argumen = array("id" => $regionid, "identifier" => "kota", "mode" => "");
+	$cost = panggil_curl(__API__ . "?ws=kota", $arr_argumen);
+	$return["cost"]=$cost[0]["cost"];
+	$return["percent"]=$rcost[0]["percent"];
 	return $return;
 }
 
