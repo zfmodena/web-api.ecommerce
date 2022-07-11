@@ -564,7 +564,7 @@ class shoppingcart extends main{
 				continue;
 			}
 			
-			if($mode!="ONLINE") $sql=str_replace("#order_source#", "and order_no like '".@$_SESSION["showroom_inisial"]."%' and concat('',replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')*1) = replace(order_no,'". @$_SESSION["showroom_inisial"] ."','')", $sql);
+			if($mode!="ONLINE") $sql=str_replace("#order_source#", "and order_no like '".@$_SESSION["showroom_inisial"]."%' and concat('', REGEXP_REPLACE(replace(order_no,'". @$_SESSION["showroom_inisial"] ."',''), '[a-zA-Z]+', '')*1) = REGEXP_REPLACE(replace(order_no,'". @$_SESSION["showroom_inisial"] ."',''), '[a-zA-Z]+', '')", $sql);
 			else				$sql=str_replace("#order_source#", "and order_no REGEXP '^[0-9]'", $sql);
 			mysql_query($sql) or die();//("insert order product error.<br />".mysql_error());
 			
