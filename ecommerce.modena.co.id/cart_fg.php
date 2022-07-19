@@ -178,7 +178,7 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
 			if( count(@$_SESSION["tradein"]) > 0 && in_array($arr_item[$kode_produk]["productid"], $_SESSION["tradein"]) )
 				$is_tradein = 1;
 
-			$nilai_diskon_per_item = cari_nilai_diskon_per_item( $_REQUEST["kode_promo"], $arr_item[$kode_produk], $server_output_diskon["item"], $arr_list_promo_per_item/*, $arr_list_promo_per_item_dengan_voucher*/ );
+			$nilai_diskon_per_item = cari_nilai_diskon_per_item( $_REQUEST["kode_promo"], $arr_item[$kode_produk]+array("sku_ori"=>$__kode_produk), $server_output_diskon["item"], $arr_list_promo_per_item/*, $arr_list_promo_per_item_dengan_voucher*/ );
 			$diskon = $arr_item[$kode_produk]["qty"] > 0 ? $nilai_diskon_per_item["diskon"] : 0;
 			$paketid = $opsi_preorder > 0 ? $arr_paket_preorder_dm[$kode_produk] : $nilai_diskon_per_item["paketid"];
 			$subtotal_sblm_diskon = $arr_item[$kode_produk]["qty"] * $arr_item[$kode_produk]["harga"];

@@ -23,7 +23,7 @@ function cari_nilai_diskon_per_item( $kode_promo, $data_item, $arr_diskon_rdm = 
 	// cek diskon per item RDM, dengan kode.. belum dibuatkan mekanisme call API RDM di air.modena.co.id/dm/ws
 	if( count($arr_diskon_rdm) > 0 ){
 		foreach( $arr_diskon_rdm as $index => $item ){
-			if( $item["item_id"] == $data_item["sku"] ){	
+			if( $item["item_id"] == $data_item["sku_ori"] ){	
 				$diskon = $item["diskon"];
 				$paketid = $item["paketid"];
 				break;
