@@ -113,6 +113,7 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 	$arr_item[$kode_produk]["pricelist"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["pricelist"];
 	$arr_item[$kode_produk]["mata_uang"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["mata_uang"];
 	$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $_REQUEST["gudang"] ]["stok"] - @$quantity_booking_order_total[$__kode_produk];
+	$arr_item[$kode_produk]["gudang"] = $_REQUEST["gudang"];
 	
 	// cek stok gudang cabang
 	if( $arr_item[$kode_produk]["stok"] < $arr_item[$kode_produk]["kuantitas"] ){
@@ -154,6 +155,7 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 
 			    }
 			}
+		$arr_item[$kode_produk]["gudang"] = $gudang_pusat;
 		}
 	}
 }
