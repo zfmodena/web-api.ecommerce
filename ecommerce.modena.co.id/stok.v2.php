@@ -24,6 +24,21 @@ argumen dibutuhkan :
 2. kota : opsional string; id kota
 3. dealer_id : opsional
 */
+$data = json_decode(file_get_contents('php://input'), true);
+if( is_array( $data)){
+	foreach( $data as $d=>$v ){
+		if($d == "items"){
+			foreach( $v as $item ){
+				$_REQUEST["item"][] = $item["item"];
+				$_REQUEST["preorder"][] = $item["preorder"];
+				$_REQUEST["kuantitas"][] = $item["kuantitas"];
+			}
+		}
+		else
+			$_REQUEST[$d] = $v;
+		
+	}
+} 
 
 // otorisasi key
 $auth = sha1(__KEY__ . @$_REQUEST["rand"] . sha1( trim( is_array($_REQUEST["item"]) ? implode("|", $_REQUEST["item"]) : $_REQUEST["item"] ) ) ) ;
@@ -98,9 +113,11 @@ $rand = rand(0,100000);
 $arr_par["c"] = "kebetot";
 $arr_par["rand"] = $rand;
 $arr_par["dealer_id"] = $dealer_id;
-foreach( $server_output as $kode_produk=>$arr_gudang_produk ){
-	if( $arr_preorder_item[ $kode_produk ] > 0 )
-	    $arr_par_item_preorder[] = $kode_produk . "_0";
+foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
+	$kode_produk = $arr_gudang_produk[ $_REQUEST["gudang"] ]["itemno_ori"];
+	if( $arr_preorder_item[ $kode_produk ] > 0 ){
+	    $arr_par_item_preorder[] = $__kode_produk . "_0";
+	}
 }
 $arr_par["item"] = $arr_par_item_preorder;
 $arr_par["auth"] = sha1(__KEY_AIR__ . $rand . implode("", array_values($arr_par["item"])));
@@ -133,17 +150,22 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 		    
 		    if( $arr_item[$kode_produk]["stok"] <= 0 ) $arr_item[$kode_produk]["stok"] = 0;
 		    
+			$arr_item[$kode_produk]["gudang"] = $gudang_pusat;
+			
 		    // stok kosong
 		    if( $arr_preorder_item[$kode_produk] <= 0 )
 			    $arr_item[$kode_produk]["kuantitas"] = ($arr_item[$kode_produk]["stok"] > 0 ? $arr_item[$kode_produk]["stok"] : 0);
 			    
 			// cek preorder
 			elseif( $arr_preorder_item[$kode_produk] > 0 ){
+				
+				$arr_item[$kode_produk]["gudang"] = __GUDANG_PUSAT__;
 
-                $arr_item[$kode_produk]["stok"] = $arr_kuota_preorder_dm[ $kode_produk ]["kuota"] <= 0 ? 0 : $arr_kuota_preorder_dm[ $kode_produk ]["kuota"];
-			    $arr_paket_preorder_dm[ $kode_produk ] = $arr_kuota_preorder_dm[ $kode_produk ]["paket_id"];
+                $arr_item[$kode_produk]["stok"] = $arr_kuota_preorder_dm[ $__kode_produk ]["kuota"] <= 0 ? 0 : $arr_kuota_preorder_dm[ $__kode_produk ]["kuota"];
+				$arr_item[$kode_produk]["campaign_preorder"]= $arr_kuota_preorder_dm[ $__kode_produk ]["paket_id"];
+				$arr_item[$kode_produk]["campaign_preorder_tersedia"]= $arr_kuota_preorder_dm[ $__kode_produk ]["paket_tersedia"];
+				
 			    if( $arr_item[$kode_produk]["stok"] > $arr_item[$kode_produk]["kuantitas"] )
-			        //$arr_item[$kode_produk]["kuantitas"] = ($arr_item[$kode_produk]["stok"] > 0 ? $arr_item[$kode_produk]["stok"] : 0);
 			        $arr_item[$kode_produk]["kuantitas"] = $arr_item[$kode_produk]["kuantitas"];
 			        
 			    // cek stok item induk di gudang pusat karena rework stiker di pusat
@@ -151,14 +173,11 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 			        
 			        $item_id_induk = $arr_gudang_produk[ $gudang_pusat ]["item_induk"];
 			        $arr_item[$kode_produk]["stok"] = $server_output[ $item_id_induk ][$gudang_pusat]["stok"];
-			        //if( $server_output[ $item_id_induk ][__GUDANG_PUSAT__]["stok"] < $arr_item[$kode_produk]["kuantitas"] )
-			         //   $arr_item[$kode_produk]["kuantitas"] = ($arr_item[$kode_produk]["stok"] > 0 ? $arr_item[$kode_produk]["stok"] : 0);
 			        if( $arr_item[$kode_produk]["stok"] > $arr_item[$kode_produk]["kuantitas"] )
 			            $arr_item[$kode_produk]["kuantitas"] = $arr_item[$kode_produk]["kuantitas"];
 
 			    }
 			}
-			$arr_item[$kode_produk]["gudang"] = $gudang_pusat;
 		}
 	}
 }
