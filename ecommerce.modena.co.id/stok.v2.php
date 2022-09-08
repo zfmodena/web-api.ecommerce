@@ -61,14 +61,22 @@ foreach( $_REQUEST["item"] as $index=>$itemno ){
 
 $dealer_id = isset( $_REQUEST["dealer_id"] ) && $_REQUEST["dealer_id"] != "" ? $_REQUEST["dealer_id"] : __IDCUST_FG__;
 
-// dapatkan gudang
+// dapatkan gudang, pertama ambil dari parameter dealer_id, kalau tidak ada dealer_id so ambil dari parameter kota
 $_REQUEST["gudang"] = __GUDANG_PUSAT__;
-if( @$_REQUEST["kota"] != "" ){
-    $arr_par = array("c"=>"kebetot", "kota"=>$_REQUEST["kota"]);
-    $server_output = panggil_curl(__API__ . "gudang", $arr_par);	
-    
-    if( @$server_output["gudang"] != "" )   
-        $_REQUEST["gudang"] = $server_output["gudang"];
+if( @$_REQUEST["dealer_id"] != "" ){
+	$arr_par = array("c"=>"kebetot", "dealer_id"=>$_REQUEST["dealer_id"]);
+		$server_output = panggil_curl(__API__ . "gudang-dealer", $arr_par);	
+		
+		if( @$server_output["gudang"] != "" )   
+			$_REQUEST["gudang"] = $server_output["gudang"];
+}else{
+	if( @$_REQUEST["kota"] != "" ){
+		$arr_par = array("c"=>"kebetot", "kota"=>$_REQUEST["kota"]);
+		$server_output = panggil_curl(__API__ . "gudang", $arr_par);	
+		
+		if( @$server_output["gudang"] != "" )   
+			$_REQUEST["gudang"] = $server_output["gudang"];
+	}
 }
 
 // dapatkan stok semuanya
