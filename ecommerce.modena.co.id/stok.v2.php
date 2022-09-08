@@ -22,6 +22,7 @@ function panggil_curl($url, $arr_par){
 argumen dibutuhkan :
 1. item : array|string kode item/sku
 2. kota : opsional string; id kota
+3. dealer_id : opsional
 */
 
 // otorisasi key
@@ -43,6 +44,8 @@ foreach( $_REQUEST["item"] as $index=>$itemno ){
     $arr_preorder_item[$itemno] = @$_REQUEST["preorder"][$index] != "" && is_numeric($_REQUEST["preorder"][$index]) ? $_REQUEST["preorder"][$index] : 0;
 }
 
+$dealer_id = isset( $_REQUEST["dealer_id"] ) && $_REQUEST["dealer_id"] != "" ? $_REQUEST["dealer_id"] : __IDCUST_FG__;
+
 // dapatkan gudang
 $_REQUEST["gudang"] = __GUDANG_PUSAT__;
 if( @$_REQUEST["kota"] != "" ){
@@ -56,7 +59,7 @@ if( @$_REQUEST["kota"] != "" ){
 // dapatkan stok semuanya
 $arr_par = array();
 $arr_par["__STOK_AMAN__"] = __STOK_AMAN__;
-$arr_par["dealer_id"] = __IDCUST_FG__;
+$arr_par["dealer_id"] = $dealer_id;
 $arr_argumen = array("item", "gudang", "negara", "mata_uang");
 foreach( $arr_argumen as $argumen )
     if( @$_REQUEST[$argumen] != "" )    $arr_par[$argumen] = $_REQUEST[$argumen];
@@ -94,7 +97,7 @@ unset($arr_par);
 $rand = rand(0,100000);
 $arr_par["c"] = "kebetot";
 $arr_par["rand"] = $rand;
-$arr_par["dealer_id"] = __IDCUST_FG__;
+$arr_par["dealer_id"] = $dealer_id;
 foreach( $server_output as $kode_produk=>$arr_gudang_produk ){
 	if( $arr_preorder_item[ $kode_produk ] > 0 )
 	    $arr_par_item_preorder[] = $kode_produk . "_0";
@@ -155,7 +158,7 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 
 			    }
 			}
-		$arr_item[$kode_produk]["gudang"] = $gudang_pusat;
+			$arr_item[$kode_produk]["gudang"] = $gudang_pusat;
 		}
 	}
 }
