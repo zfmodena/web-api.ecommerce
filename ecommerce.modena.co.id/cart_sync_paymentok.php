@@ -20,9 +20,9 @@ function kirim_email($url, $arr_par){
 }
 
 // trap utk proses berikutnya, pastikan di pembayaran midtrans sudah berhasil (status code = 200)
-$sql = "select 1 from modena_db.transactions a inner join modena_db.orders b on a.order_id = b.id where a.status_code = 200 and b.modena_order_no = '". main::formatting_query_string(@$_REQUEST["order_no"]) ."'";
-$rs_cek_status_code = mysql_query($sql);
-if( mysql_num_rows( $rs_cek_status_code ) <= 0 ) die("E3");
+//$sql = "select 1 from modena_db.transactions a inner join modena_db.orders b on a.order_id = b.id where a.status_code = 200 and b.modena_order_no = '". main::formatting_query_string(@$_REQUEST["order_no"]) ."'";
+//$rs_cek_status_code = mysql_query($sql);
+//if( mysql_num_rows( $rs_cek_status_code ) <= 0 ) die("E3");
 
 // mekanisme sinkron ke accpac
 include_once "accpac_sync_modena_active.php";
