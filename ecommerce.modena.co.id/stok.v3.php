@@ -45,6 +45,8 @@ $auth = sha1(__KEY__ . @$_REQUEST["rand"] . sha1( trim( is_array($_REQUEST["item
 //die($auth);
 if( $auth != @$_REQUEST["auth"] ) die("E1 " . $auth);
 
+$arr_available_grade = ["B"];
+
 $default_qty = 1;
 if( !is_array($_REQUEST["item"]) ) {$temp_item = $_REQUEST["item"]; unset($_REQUEST["item"]); $_REQUEST["item"][] = $temp_item;}
 if( !is_array($_REQUEST["kuantitas"]) ) {$temp_kuantitas = $_REQUEST["kuantitas"]; unset($_REQUEST["kuantitas"]); $_REQUEST["kuantitas"][] = $temp_kuantitas;}
@@ -80,18 +82,21 @@ if( @$_REQUEST["dealer_id"] != "" ){
 }
 
 // untuk setting grade gudang sesuai request
-if( isset($_REQUEST["grade"]) && in_array($_REQUEST["grade"], ["B"]) ){
+if( isset($_REQUEST["grade"]) && in_array($_REQUEST["grade"], $arr_available_grade) ){
 	$_REQUEST["gudang"] = substr($_REQUEST["gudang"], 0, strlen($_REQUEST["gudang"])-1) . $_REQUEST["grade"];
 }
 
 // dapatkan stok semuanya
 $arr_par = array();
-$arr_par["__STOK_AMAN__"] = __STOK_AMAN__;
+$arr_par["__STOK_AMAN__"] = 0;//__STOK_AMAN__;
 $arr_par["dealer_id"] = $dealer_id;
 $arr_argumen = array("item", "gudang", "negara", "mata_uang");
+if( isset($_REQUEST["grade"]) && in_array($_REQUEST["grade"], $arr_available_grade) ){
+	array_push($arr_argumen, grade);
+}
 foreach( $arr_argumen as $argumen )
     if( @$_REQUEST[$argumen] != "" )    $arr_par[$argumen] = $_REQUEST[$argumen];
-//die(__API__ . "?ws=stok_level.v2&". http_build_query($arr_par));
+//die(__API__ . "?ws=stok_level.v3&". http_build_query($arr_par));
 $server_output = panggil_curl(__API__ . "?ws=stok_level.v3&", $arr_par);	
 
 // kuantitas dari order website yang masih terpending (order_status = 0 dan -1)
@@ -153,7 +158,7 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 		
 		$gudang_pusat = __GUDANG_PUSAT__;
 		// untuk setting grade gudang sesuai request
-		if( isset($_REQUEST["grade"]) && in_array($_REQUEST["grade"], ["B"]) ){
+		if( isset($_REQUEST["grade"]) && in_array($_REQUEST["grade"], $arr_available_grade) ){
 			$gudang_pusat = substr($gudang_pusat, 0, strlen($gudang_pusat)-1) . $_REQUEST["grade"];
 		}
 
@@ -161,7 +166,7 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 		if( $arr_item[$kode_produk]["stok"] <= 0 ){
 			$gudang_pusat = __GUDANG_PUSAT_TGN__;
 			// untuk setting grade gudang sesuai request
-			if( isset($_REQUEST["grade"]) && in_array($_REQUEST["grade"], ["B"]) ){
+			if( isset($_REQUEST["grade"]) && in_array($_REQUEST["grade"], $arr_available_grade) ){
 				$gudang_pusat = substr($gudang_pusat, 0, strlen($gudang_pusat)-1) . $_REQUEST["grade"];
 			}
 		
