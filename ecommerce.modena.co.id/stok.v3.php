@@ -225,7 +225,12 @@ foreach( array_keys( $arr_item ) as $itemno ){
 	}
 }
 
+$return = [];
+foreach( $arr_return as $itemcode => $iteminfo ){
+	$return[] = $iteminfo;
+}
+
 header("Content-Type: application/json");
-echo json_encode($arr_return);
+echo json_encode($return);
 
 ?>
