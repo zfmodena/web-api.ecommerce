@@ -190,7 +190,7 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 				$arr_item[$kode_produk]["gudang"] = __GUDANG_PUSAT__;
 
                 $arr_item[$kode_produk]["stok"] = $arr_kuota_preorder_dm[ $__kode_produk ]["kuota"] <= 0 ? 0 : $arr_kuota_preorder_dm[ $__kode_produk ]["kuota"];
-				$arr_item[$kode_produk]["campaign_preorder"]= $arr_kuota_preorder_dm[ $__kode_produk ]["paket_id"];
+				$arr_item[$kode_produk]["campaign_preorder"]= $arr_kuota_preorder_dm[ $__kode_produk ]["paketid"];
 				$arr_item[$kode_produk]["campaign_preorder_tersedia"]= $arr_kuota_preorder_dm[ $__kode_produk ]["paket_tersedia"];
 				
 			    if( $arr_item[$kode_produk]["stok"] > $arr_item[$kode_produk]["kuantitas"] )
