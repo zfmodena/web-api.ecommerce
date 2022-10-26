@@ -183,6 +183,10 @@ function sync_accpac($order_no, $debug = false){
 	$kode_customer_tradein = "C018-000392"; // kode customer default untuk tradein online dari website
 	$kode_customer_sparepart = "C001-000331"; // kode customer default untuk penjualan sparepart online dari website
 	
+	if( isset( $_REQUEST["kode_customer"] ) && $_REQUEST["kode_customer"] != "" ) $kode_customer = $_REQUEST["kode_customer"];
+	if( isset( $_REQUEST["kode_customer_tradein"] ) && $_REQUEST["kode_customer_tradein"] != "" ) $kode_customer_tradein = $_REQUEST["kode_customer_tradein"];
+	if( isset( $_REQUEST["kode_customer_sparepart"] ) && $_REQUEST["kode_customer_sparepart"] != "" ) $kode_customer_sparepart = $_REQUEST["kode_customer_sparepart"];
+	
 	// cek kode customer dari membercard, apabila ada berarti penjualan dari showroom
 	/*$sql = "select kode_customer from `". __MEMBERCARD_DB__ ."`.order_kodecustomer where order_no = '". main::formatting_query_string($order_number) ."' ";
 	$rs_cek_kode_customer = mysql_query($sql) or die();
