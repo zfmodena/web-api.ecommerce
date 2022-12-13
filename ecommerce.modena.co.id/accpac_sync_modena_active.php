@@ -179,8 +179,8 @@ function sync_accpac($order_no, $debug = false){
 							);
 
 	// dapatkan dealer id = konstanta kode dari tabel sgtdat..arcus = penjualan online dari website
-	$kode_customer = "C018-000389"; // kode customer default untuk penjualan online dari website
-	$kode_customer_tradein = "C018-000392"; // kode customer default untuk tradein online dari website
+	$kode_customer = "C018-000761"; // kode customer default untuk penjualan online dari telemarketing
+	$kode_customer_tradein = "C018-000762"; // kode customer default untuk tradein online dari telemarketing
 	$kode_customer_sparepart = "C001-000331"; // kode customer default untuk penjualan sparepart online dari website
 	
 	if( isset( $_REQUEST["kode_customer"] ) && $_REQUEST["kode_customer"] != "" ) $kode_customer = $_REQUEST["kode_customer"];
