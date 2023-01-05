@@ -52,12 +52,12 @@ mysql_query("SET SESSION sql_mode = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
 //define("SMTP_HOST","smtp.cbn.net.id");
 //define("SMTP_HOST","192.168.1.20");
 define("SMTP_PORT",587);
-define("SMTP_HOST","mail3.modena.co.id");
+define("SMTP_HOST","smtp.office365.com");
 define("SMTP_AUTH",true);
-define("SMTP_USERNAME","support@modena.co.id");
+define("SMTP_USERNAME","no-reply@modena.com");
 //define("SMTP_USERNAME","");
 //define("SMTP_PASSWORD","sp*328");
-define("SMTP_PASSWORD","5upp0RT@m0d3n4");
+define("SMTP_PASSWORD","nr_328_modena");
 //define("SMTP_PASSWORD","");
 define("CRLF","\n");
 
@@ -66,7 +66,7 @@ define("SALESADMIN_EMAIL", "Diah.Aryati@modena.com");
 define("FINANCE_EMAIL", "collection.finance@modena.com");
 define("WAREHOUSE_EMAIL", "warehouse@modena.co.id");
 define("SHOWROOM_EMAIL", "showroom.center@modena.co.id");
-define("SUPPORT_EMAIL", "support@modena.co.id");
+define("SUPPORT_EMAIL", "no-reply@modena.com");
 define("MANAGEMENT_EMAIL", "support@modena.co.id");
 define("MARCOMM_EMAIL", "vina.wijaya@modena.co.id");
 define("CULINARIA_EMAIL", "marketing.culinaria@modena.co.id");

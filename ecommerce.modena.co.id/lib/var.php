@@ -29,11 +29,11 @@ mysql_select_db($database) or die("");// ("Error connect to database : ". mysql_
 //koneksi smtp email
 //define("SMTP_HOST","smtp.cbn.net.id");
 //define("SMTP_HOST","192.168.1.20");
-define("SMTP_HOST","mail3.modena.co.id");
+define("SMTP_HOST","smtp.office365.com");
 define("SMTP_AUTH",false);
-define("SMTP_USERNAME","support@modena.co.id");
+define("SMTP_USERNAME","no-reply@modena.com");
 //define("SMTP_USERNAME","");
-define("SMTP_PASSWORD","000000");
+define("SMTP_PASSWORD","nr_328_modena");
 //define("SMTP_PASSWORD","");
 define("CRLF","\n");
 
