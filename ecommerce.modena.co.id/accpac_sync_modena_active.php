@@ -213,7 +213,7 @@ function sync_accpac($order_no, $debug = false){
 	}
 	
 	// dapatkan kode sales = konstanta kode dari tabel sgtdat..arsap = PIC di BDRE
-	$arr_curl_kodesales = array("txtKodeSales" => isset($_REQUEST["kode_sales"]) && $_REQUEST["kode_sales"] != "" ? $_REQUEST["kode_sales"] : 231);
+	$arr_curl_kodesales = array("txtKodeSales" => isset($_REQUEST["kode_sales"]) && $_REQUEST["kode_sales"] != "" ? $_REQUEST["kode_sales"] : 11620);
 
 	// dapatkan daftar item
 	$txtItem = $txtQty = $txtPrice = $txtDisc = $txtKet = $txtItembrkid = array();
