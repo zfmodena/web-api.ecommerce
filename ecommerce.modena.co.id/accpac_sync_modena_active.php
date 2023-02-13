@@ -200,9 +200,9 @@ function sync_accpac($order_no, $debug = false){
 	$arr_curl_dealerid_sparepart = array("txtDealerId"=>$kode_customer_sparepart);
 
 	// dapatkan propinsi dan kota gudang/cabang, khusus untuk membercard gunakan variabel $_POST["txtGudang"] untuk mengirimkan kode gudang ke server
-	if( $kode_customer != "C018-000389" ) // kode customer untuk penjualan dari showroom
-		$arr_curl_branch = array("txtGudang" => $_SESSION["showroom_kode_gudang"]);
-	else{
+	//if( $kode_customer != "C018-000389" ) // kode customer untuk penjualan dari showroom
+	//	$arr_curl_branch = array("txtGudang" => $_SESSION["showroom_kode_gudang"]);
+	//else{
 		$sql = "select a.branch_state_id, a.branch_region_id from branch_service a, shipment_exception b, shipment_state c where 
 			a.service_state_id=b.state_id and a.service_region_id=b.region_id and b.state_id=c.state_id 
 			and upper(trim(b.region)) like concat('%',upper(trim('". main::formatting_query_string($data_order["shipping_address_city"]) ."')),'%')
@@ -210,7 +210,7 @@ function sync_accpac($order_no, $debug = false){
 		$rs_branch = mysql_query($sql) or die();
 		$branch = mysql_fetch_array($rs_branch);
 		$arr_curl_branch = array("propinsi"=>$branch["branch_state_id"], "kota"=>$branch["branch_region_id"]);
-	}
+	//}
 	
 	// dapatkan kode sales = konstanta kode dari tabel sgtdat..arsap = PIC di BDRE
 	$arr_curl_kodesales = array("txtKodeSales" => isset($_REQUEST["kode_sales"]) && $_REQUEST["kode_sales"] != "" ? $_REQUEST["kode_sales"] : 11620);
