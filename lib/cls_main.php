@@ -489,5 +489,20 @@ fungsi send email error
 		$return=mysql_query($sql) or die();//("shipment_state query error.<br />".mysql_error());
 		return $return;
 	}	
+	
+	public static function __curl_connect($url, $requestData){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, __API__ . $url);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $requestData);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, __CURL_TIMEOUT); 
+		curl_setopt($ch, CURLOPT_TIMEOUT, __CURL_TIMEOUT);
+		curl_setopt($ch, CURLOPT_FAILONERROR, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$response = curl_exec ($ch); 
+		$responseDecoded = json_decode($response);
+		return ["response" => $response, "responseDecoded" => $responseDecoded];
+	}
 }
 ?>

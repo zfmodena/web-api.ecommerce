@@ -151,13 +151,20 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 		if( $arr_item[$kode_produk]["stok"] <= 0 ){
 			$gudang_pusat = __GUDANG_PUSAT_TGN__;
 			$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$__kode_produk];
+			
+			if( $arr_item[$kode_produk]["stok"] <= 0 ){
+				$gudang_pusat = __GUDANG_PUSAT_JTK__;
+				$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$__kode_produk];
+			}
 		}
+		
+		$arr_item[$kode_produk]["gudang"] = $gudang_pusat;
 		
 		// cek stok gudang pusat
 		if( $arr_item[$kode_produk]["stok"] < $arr_item[$kode_produk]["kuantitas"] ){
 		    
 		    if( $arr_item[$kode_produk]["stok"] <= 0 ) $arr_item[$kode_produk]["stok"] = 0;
-		    
+
 			$arr_item[$kode_produk]["gudang"] = $gudang_pusat;
 			
 		    // stok kosong

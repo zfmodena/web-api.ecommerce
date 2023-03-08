@@ -171,6 +171,16 @@ foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 			}
 		
 			$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$__kode_produk];
+			
+			if( $arr_item[$kode_produk]["stok"] <= 0 ){
+				$gudang_pusat = __GUDANG_PUSAT_JTK__;
+				// untuk setting grade gudang sesuai request
+				if( isset($_REQUEST["grade"]) && in_array($_REQUEST["grade"], $arr_available_grade) ){
+					$gudang_pusat = substr($gudang_pusat, 0, strlen($gudang_pusat)-1) . $_REQUEST["grade"];
+				}
+			
+				$arr_item[$kode_produk]["stok"] = $arr_gudang_produk[ $gudang_pusat ]["stok"] - @$quantity_booking_order_total[$__kode_produk];
+			}
 		}
 		
 		$arr_item[$kode_produk]["gudang"] = $gudang_pusat;
