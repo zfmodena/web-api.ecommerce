@@ -156,15 +156,16 @@ if( isset($_REQUEST["all_gudang"]) ){
 	
 		$index = 0;
 		foreach( array_values($arr_gudang_produk) as $gudang_produk ){
+			$stok = $gudang_produk["stok"] - @$quantity_booking_order_total[$__kode_produk];
 			if( ($gudang_produk["stok"] - @$quantity_booking_order_total[$__kode_produk]) < $arr_item[$kode_produk]["kuantitas"] ){
-				continue;
+				$stok = 0;
 			}
 			$arr_item_[$index]["nama_item"] = $gudang_produk["item"];
 			$arr_item_[$index]["itemno_negara"] = $gudang_produk["itemno"];
 			$arr_item_[$index]["harga"] = $gudang_produk["harga"];
 			$arr_item_[$index]["pricelist"] = $gudang_produk["pricelist"];
 			$arr_item_[$index]["mata_uang"] = $gudang_produk["mata_uang"];
-			$arr_item_[$index]["stok"] = $gudang_produk["stok"] - @$quantity_booking_order_total[$__kode_produk];
+			$arr_item_[$index]["stok"] = $stok;
 			$arr_item_[$index]["gudang"] = $gudang_produk["kode_gudang"];	
 			$arr_item_[$index]["itemno"] = $kode_produk;	
 			$index++;
