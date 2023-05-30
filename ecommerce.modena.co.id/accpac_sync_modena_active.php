@@ -140,6 +140,7 @@ function sync_accpac($order_no, $debug = false){
 	$data_order["billing_handphone_no"] = $argumen["shipping_handphone_no"];
 	$data_order["shipping_date"] = $argumen["shipping_date"];
 	$data_order["shipping_note"] = $argumen["shipping_note"];
+	$data_order["coupon_code"] = $argumen["coupon_code"];
 	
 	$data_order["ongkir"] = $argumen["ongkir"];
 	$data_order["order_amount"] = $argumen["order_amount"]; // net amount dengan ongkir, termasuk diskon per item + diskon invoice
@@ -170,7 +171,8 @@ function sync_accpac($order_no, $debug = false){
 								"telp_kirim" => substr( trim( $data_order["shipping_phone_no"] ), 0, 30 ),
 								"hp_kirim" => substr( trim( $data_order["shipping_handphone_no"] ), 0, 30 ),
 								"tanggal_kirim" => $data_order["shipping_date"], 
-								"note_kirim" => $data_order["shipping_note"] 
+								"note_kirim" => $data_order["shipping_note"] ,
+								"kode_kupon" => $data_order["coupon_code"] 
 							);
 	$arr_curl_tagih = array(	"nama_tagih" => substr( trim( $data_order["billing_first_name"] . " " . $data_order["billing_last_name"] ), 0, 30 ),
 								"alamat_tagih" => substr( trim( $data_order["billing_address"] ), 0, 240 ),
