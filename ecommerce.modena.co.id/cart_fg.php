@@ -120,7 +120,12 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
     		if( $arr_gudang_produk[ $gudang_terpilih ]["stok"] - @$quantity_booking_order_total[$kode_produk] < $arr_item[$kode_produk_ori]["qty"] ){
     		    
     			$gudang_terpilih = __GUDANG_PUSAT__;
-				if( !array_key_exists($gudang_terpilih, $arr_gudang_produk) || $gudang_terpilih == $_SESSION["gudang"] )	$gudang_terpilih = __GUDANG_PUSAT_TGN__;
+				if( !array_key_exists($gudang_terpilih, $arr_gudang_produk) || $gudang_terpilih == $_SESSION["gudang"] )	{
+					$gudang_terpilih = __GUDANG_PUSAT_TGN__;
+					if( !array_key_exists($gudang_terpilih, $arr_gudang_produk) || $gudang_terpilih == $_SESSION["gudang"] ){
+						$gudang_terpilih = __GUDANG_PUSAT_JTK__;
+					}
+				}
     			
     			// cek stok gudang pusat
     			if( $arr_gudang_produk[ $gudang_terpilih ]["stok"] - @$quantity_booking_order_total[$kode_produk] < $arr_item[$kode_produk_ori]["qty"] ){
@@ -190,7 +195,6 @@ if( count($_SESSION["shopping_cart"]) >0 && @$_SESSION["gudang"] != "" ){
 			$_SESSION["shopping_cart_subtotal"][ $arr_item[$kode_produk]["productid"] ] = $subtotal;
 			$shipment_delay = $gudang_terpilih == (@$_REQUEST["gudang"] != "" ? $_REQUEST["gudang"] : $_SESSION["gudang"]) ?
 					__DURASI_HARI_KIRIM_REGULER__ : $arr_gudang_produk[ $_SESSION["gudang"] ]["interval_pengiriman"];
-		    
 		    
 			$parameter_sql_insert[] = "(
 			                            '". main::formatting_query_string($data_order_id["order_id"]) ."', '". main::formatting_query_string( $arr_item[$kode_produk]["productid"] ) ."',
