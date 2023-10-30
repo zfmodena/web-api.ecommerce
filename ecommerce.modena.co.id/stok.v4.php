@@ -151,10 +151,10 @@ $arr_kuota_preorder_dm = panggil_curl(__API__ . "preorder_kuota", $arr_par);
 if( isset($_REQUEST["all_gudang"]) ){
 	
 	$arr_item_ = [];
+	$index = 0;
 	foreach( $server_output as $__kode_produk=>$arr_gudang_produk ){
 		$kode_produk = $arr_gudang_produk[ $_REQUEST["gudang"] ]["itemno_ori"];
 	
-		$index = 0;
 		foreach( array_values($arr_gudang_produk) as $gudang_produk ){
 			$stok = $gudang_produk["stok"] - @$quantity_booking_order_total[$__kode_produk];
 			if( ($gudang_produk["stok"] - @$quantity_booking_order_total[$__kode_produk]) < $arr_item[$kode_produk]["kuantitas"] ){
