@@ -696,7 +696,8 @@ class order extends main{
 			//print_r($arr_par);exit;
 			//echo json_encode($arr_par);exit;
 			$ch = curl_init();			
-			curl_setopt($ch, CURLOPT_URL, "http://172.16.1.12:30101" );
+			curl_setopt($ch, CURLOPT_URL, "http://172.16.1.12:30101/mail/send" );
+			//curl_setopt($ch, CURLOPT_URL, "http://192.168.3.86:28060/mail/send" );
 			curl_setopt($ch, CURLOPT_POST, true);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $arr_par);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -704,6 +705,7 @@ class order extends main{
 			curl_setopt($ch, CURLOPT_TIMEOUT, $GLOBALS["curl_timeout"]);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			$server_output = curl_exec ($ch);
+			//print_r($server_output);
 			return false;
 			
 			ini_set("include_path",INCLUDE_PATH);
