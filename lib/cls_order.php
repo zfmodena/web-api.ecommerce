@@ -666,7 +666,7 @@ class order extends main{
 			}
 
 			// mail service 
-			unset($arr_par);
+			/*unset($arr_par);
 			$arr_par["appName"] = "ECOMMERCE";
 			if( isset($to["To"]) && $to["To"] != "" ){
 				$arrTo = explode(",",$to["To"]);
@@ -705,9 +705,9 @@ class order extends main{
 			curl_setopt($ch, CURLOPT_TIMEOUT, $GLOBALS["curl_timeout"]);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			$server_output = curl_exec ($ch);
-			//print_r($server_output);
+			print_r($server_output);
 			return false;
-			
+			*/
 			ini_set("include_path",INCLUDE_PATH);
 			require_once "pear/Mail.php";
 			require_once "pear/mime.php";		
