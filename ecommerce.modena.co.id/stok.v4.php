@@ -50,7 +50,7 @@ $auth = sha1(__KEY__ . @$_REQUEST["rand"] . sha1( trim( is_array($_REQUEST["item
 //die($auth);
 if( $auth != @$_REQUEST["auth"] ) die("E1 " . $auth);
 
-$arr_available_grade = ["B"];
+$arr_available_grade = ["B","K"];
 
 $default_qty = 1;
 if( !is_array($_REQUEST["item"]) ) {$temp_item = $_REQUEST["item"]; unset($_REQUEST["item"]); $_REQUEST["item"][] = $temp_item;}
@@ -68,21 +68,23 @@ foreach( $_REQUEST["item"] as $index=>$itemno ){
 
 $dealer_id = isset( $_REQUEST["dealer_id"] ) && $_REQUEST["dealer_id"] != "" ? $_REQUEST["dealer_id"] : __IDCUST_FG__;
 
-// dapatkan gudang, pertama ambil dari parameter dealer_id, kalau tidak ada dealer_id so ambil dari parameter kota
-$_REQUEST["gudang"] = __GUDANG_PUSAT__;
-if( @$_REQUEST["dealer_id"] != "" ){
-	$arr_par = array("c"=>"kebetot", "dealer_id"=>$_REQUEST["dealer_id"]);
-		$server_output = panggil_curl(__API__ . "gudang-dealer", $arr_par);	
-		
-		if( @$server_output["gudang"] != "" )   
-			$_REQUEST["gudang"] = $server_output["gudang"];
-}else{
-	if( @$_REQUEST["kota"] != "" ){
-		$arr_par = array("c"=>"kebetot", "kota"=>$_REQUEST["kota"]);
-		$server_output = panggil_curl(__API__ . "gudang", $arr_par);	
-		
-		if( @$server_output["gudang"] != "" )   
-			$_REQUEST["gudang"] = $server_output["gudang"];
+// dapatkan gudang : pertama ambil dari parameter gudang .. kalau tidak ada parameter gudang, maka ambil dealer_id, kalau tidak ada dealer_id so ambil dari parameter kota
+if(!isset($_REQUEST["gudang"]) || $_REQUEST["gudang"] == ""){
+	$_REQUEST["gudang"] = __GUDANG_PUSAT__;
+	if( @$_REQUEST["dealer_id"] != "" ){
+		$arr_par = array("c"=>"kebetot", "dealer_id"=>$_REQUEST["dealer_id"]);
+			$server_output = panggil_curl(__API__ . "gudang-dealer", $arr_par);	
+			
+			if( @$server_output["gudang"] != "" )   
+				$_REQUEST["gudang"] = $server_output["gudang"];
+	}else{
+		if( @$_REQUEST["kota"] != "" ){
+			$arr_par = array("c"=>"kebetot", "kota"=>$_REQUEST["kota"]);
+			$server_output = panggil_curl(__API__ . "gudang", $arr_par);	
+			
+			if( @$server_output["gudang"] != "" )   
+				$_REQUEST["gudang"] = $server_output["gudang"];
+		}
 	}
 }
 
